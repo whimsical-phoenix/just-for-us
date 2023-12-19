@@ -1,70 +1,143 @@
-# Getting Started with Create React App
+# Garden Loft Smart Home App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Garden Loft Smart Home App! This app provides a user interface for managing smart home devices.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+Follow these steps to install and run the app on your local machine:
 
-### `npm start`
+### Clone the repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+git clone https://github.com/whimsical-phoenix/gardenLoft.git
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Navigate to the project directory
 
-### `npm test`
+```
+cd garden-loft-app
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Install Dependencies
 
-### `npm run build`
+```
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Install server dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+cd server
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Start the React development
 
-### `npm run eject`
+Make sure you are in the just-for-us folder
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app will be accessible at http://localhost:3000/.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### In a separate terminal, start the Node.js server using nodemon
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+nodemon Server/server.js
+```
 
-## Learn More
+The server will be accessible at http://localhost:3001/.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Node.js: Ensure that you have Node.js installed. You can download it from [https://nodejs.org/](https://nodejs.org/).
 
-### Code Splitting
+## Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+src/: Contains the source code for the React application.
+public/: Contains static assets and the HTML template.
+server/: Contains the server-side code.
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Getting the Latest Changes
 
-### Making a Progressive Web App
+Before starting your work, make sure you have the latest changes from the main repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+# Ensure you are on the main branch
+git checkout main
 
-### Advanced Configuration
+# Fetch the latest changes
+git pull origin main
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Creating a New Branch
 
-### Deployment
+Create a new branch for your feature or bug fix:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+# Create a new branch
+git checkout -b feature/your-feature
+```
 
-### `npm run build` fails to minify
+### Making Changes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Make your changes and commit them:
+
+```bash
+# Add your changes
+git add .
+
+# Commit your changes
+git commit -m 'Add some feature'
+```
+
+### Fetching Updates
+
+If there were changes in the main repository while you were working, fetch them to keep your branch up to date:
+
+```bash
+# Fetch updates from the main repository
+git fetch origin main
+```
+
+### Handling Merge Conflicts
+
+If there are conflicting changes, Git will inform you. Resolve the conflicts in your code and commit the changes:
+
+```bash
+# Resolve conflicts in your code
+# (Edit the conflicted files to resolve conflicts)
+
+# Add the resolved changes
+git add .
+
+# Commit the resolved changes
+git commit -m 'Resolve merge conflicts'
+```
+
+### Pushing Changes
+
+Push your changes to the repository:
+
+```bash
+# Push changes to your branch
+git push origin feature/your-feature
+```
+
+## Opening a Pull Request
+
+Open a pull request on GitHub:
+
+1. Navigate to the repository on GitHub.
+2. Switch to the branch containing your changes.
+3. Click on "Pull Request" and follow the instructions.
+   Other developers will review your changes, and once approved, your contribution will be merged into the main repository.
+
+Thank you for contributing to Garden Loft Smart Home App!
+
+## License
+
+This project is licensed under the MIT License.
