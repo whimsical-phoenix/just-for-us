@@ -423,6 +423,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
+import Watchtv from "../components/watchTv/Watchtv";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -514,7 +515,7 @@ const TextBelowCard = styled.h1`
 
 const cardData = [
   {
-    link: "/garden-loft-app/entertainment",
+    link: "/components/watchTv",
     icon: <TvIcon />,
     title: "TV",
     textBelowCard: "Watch TV?",
@@ -600,6 +601,7 @@ const Home = () => {
       </HomeContainer>
       {centerCardIndex === 4 && <Contacts />}
       <CallHelpButtonComponent />
+      <Watchtv/>
     </>
   );
 };
