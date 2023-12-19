@@ -515,10 +515,11 @@ const TextBelowCard = styled.h1`
 
 const cardData = [
   {
-    link: "/components/watchTv",
+   
     icon: <TvIcon />,
     title: "TV",
     textBelowCard: "Watch TV?",
+   page: <watchTv/>,
   },
   {
     icon: <MdOutlineSportsMartialArts size={150} />,
