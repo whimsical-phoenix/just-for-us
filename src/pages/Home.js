@@ -610,6 +610,7 @@ const Home = () => {
       {centerCardIndex === 5 && <Lights />}
       {centerCardIndex === 4 && <Contacts />}
       <CallHelpButtonComponent />
+      <Watchtv />
     </>
   );
 };
