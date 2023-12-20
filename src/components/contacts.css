@@ -43,7 +43,7 @@
 
 /* change centering between carousel slides */
 .slick-slide > div {
-  display: grid;
+  display: flex;
   place-items: center;
   width: 100%;
   margin-top: 50px;
@@ -56,7 +56,7 @@
   margin: auto;
   width: 100%;
   padding: 10px;
-  padding-left: 90px;
+  padding-left: 180px;
 }
 
 .slide {
