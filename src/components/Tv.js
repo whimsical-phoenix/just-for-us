@@ -42,7 +42,7 @@ const contactList = [
 
 //Create a useState for cycling names through the prompt div on the bottom
 
-function Tv() {
+function Television() {
   // const redirectToURL = (url) => {
   //   window.location.href = url; // Navigate to the specified URL in the same tab
   // };
@@ -136,4 +136,4 @@ function Tv() {
   );
 }
 
-export default Tv;
+export default Television;

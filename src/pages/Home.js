@@ -425,7 +425,7 @@ import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
 import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
-import Tv from "../components/Tv";
+import Television from "../components/Tv";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -521,7 +521,7 @@ const cardData = [
     icon: <TvIcon />,
     title: "TV",
     textBelowCard: "Watch TV?",
-    page: <Tv.js />,
+    page: <Television />,
   },
   {
     icon: <MdOutlineSportsMartialArts size={150} />,
@@ -603,7 +603,7 @@ const Home = () => {
           </Slider>
         </CarouselWrapper>
       </HomeContainer>
-      {centerCardIndex === 0 && <Tv />}
+      {centerCardIndex === 0 && <Television />}
       {centerCardIndex === 2 && <Entertainment />}
 
       {centerCardIndex === 5 && <Lights />}
