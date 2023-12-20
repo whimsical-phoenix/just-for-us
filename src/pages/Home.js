@@ -425,8 +425,7 @@ import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
 import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
-
-import WatchTv from "../components/WatchTv";
+import WatchTv from "../components/WatchTV";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -610,7 +609,6 @@ const Home = () => {
       {centerCardIndex === 5 && <Lights />}
       {centerCardIndex === 4 && <Contacts />}
       <CallHelpButtonComponent />
-      <Watchtv />
     </>
   );
 };
