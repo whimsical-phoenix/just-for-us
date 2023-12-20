@@ -423,7 +423,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
-import Watchtv from "../components/watchTv/Watchtv";
+
 
 const HomeContainer = styled.div`
   position: relative;
@@ -519,7 +519,7 @@ const cardData = [
     icon: <TvIcon />,
     title: "TV",
     textBelowCard: "Watch TV?",
-   page: <watchTv/>,
+  
   },
   {
     icon: <MdOutlineSportsMartialArts size={150} />,
