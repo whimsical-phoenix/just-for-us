@@ -47,7 +47,7 @@ function WatchTv() {
   //   window.location.href = url; // Navigate to the specified URL in the same tab
   // };
 
-  // Arrow Functions
+  // Arrow Functionss
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>

@@ -425,7 +425,7 @@ import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
 import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
-import WatchTv from "../components/WatchTV";
+import WatchTv from "../components/WatchTv";
 
 const HomeContainer = styled.div`
   position: relative;
