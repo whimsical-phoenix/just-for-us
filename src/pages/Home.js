@@ -423,6 +423,10 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
+import Lights from "../components/Lights";
+import Entertainment from "../components/Entertainment";
+
+import WatchTv from "../components/WatchTv";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -514,10 +518,11 @@ const TextBelowCard = styled.h1`
 
 const cardData = [
   {
-    link: "/garden-loft-app/entertainment",
+    // link: "/garden-loft-app/entertainment",
     icon: <TvIcon />,
     title: "TV",
     textBelowCard: "Watch TV?",
+    page: <WatchTv.js />,
   },
   {
     icon: <MdOutlineSportsMartialArts size={150} />,
@@ -525,13 +530,14 @@ const cardData = [
     textBelowCard: "Join an Activity?",
   },
   {
-    link: "/garden-loft-app/services",
+    // link: "/garden-loft-app/services",
     icon: <GiFilmSpool size={150} />,
     title: "ENTERTAINMENT",
     textBelowCard: "Watch Entertainment?",
+    page: <Entertainment />,
   },
   {
-    link: "/garden-loft-app/services",
+    // link: "/garden-loft-app/services",
     icon: <IoSettings size={150} />,
     title: "SETTINGS",
     textBelowCard: "Change Settings?",
@@ -543,10 +549,11 @@ const cardData = [
     page: <Contacts />,
   },
   {
-    link: "/garden-loft-app/smart-loft",
+    // link: "/garden-loft-app/smart-loft",
     icon: <FaLightbulb size={150} />,
     title: "LIGHTS",
     textBelowCard: "Change Lights?",
+    page: <Lights />,
   },
 ];
 
@@ -584,7 +591,6 @@ const Home = () => {
             {cardData.map((card, index) => (
               <CardColumn key={index}>
                 <StyledProfileCard
-                  display={"block"}
                   link={card.link}
                   icon={card.icon}
                   title={card.title}
@@ -598,6 +604,10 @@ const Home = () => {
           </Slider>
         </CarouselWrapper>
       </HomeContainer>
+      {centerCardIndex === 0 && <WatchTv />}
+      {centerCardIndex === 2 && <Entertainment />}
+
+      {centerCardIndex === 5 && <Lights />}
       {centerCardIndex === 4 && <Contacts />}
       <CallHelpButtonComponent />
     </>
