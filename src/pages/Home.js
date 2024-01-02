@@ -426,6 +426,7 @@ import { MdOutlineSportsMartialArts } from "react-icons/md";
 import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
+import Activities from "../components/Activities";
 
 const HomeContainer = styled.div`
   position: relative;
@@ -527,6 +528,7 @@ const cardData = [
     icon: <MdOutlineSportsMartialArts size={150} />,
     title: "ACTIVITIES",
     textBelowCard: "Join an Activity?",
+    page: <Activities />,
   },
   {
     // link: "/garden-loft-app/services",
@@ -604,6 +606,7 @@ const Home = () => {
         </CarouselWrapper>
       </HomeContainer>
       {centerCardIndex === 0 && <Television />}
+      {centerCardIndex === 1 && <Activities />}
       {centerCardIndex === 2 && <Entertainment />}
 
       {centerCardIndex === 5 && <Lights />}
