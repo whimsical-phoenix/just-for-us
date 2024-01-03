@@ -1,106 +1,31 @@
-@import "~slick-carousel/slick/slick.css";
-
-@import "~slick-carousel/slick/slick-theme.css";
-
-.linkStyle {
-  text-decoration: none;
-  color: #fff;
+arrow-up {
+  color: black;
 }
 
-#contacts {
-  width: 80%;
-  text-align: center;
-  align-content: center;
-  margin: auto;
-  position: relative;
-  margin-left: 6rem;
-}
-
-.slider-call {
-  display: flex;
-  flex-direction: column;
-  padding-top: 9rem;
-}
-
-.call-help h1 {
-  margin: 1rem;
-}
-
-.arrow-down {
-  display: flex;
-  flex-direction: column;
-  margin-left: 47%;
-}
-
-.home-logo {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-bottom: 0;
-  margin-top: 34px;
-  position: fixed;
-}
-
-/* change centering between carousel slides */
-.slick-slide > div {
-  display: grid;
-  place-items: center;
-  width: 100%;
-  margin-top: 50px;
-  margin: auto;
-  padding: 0px;
-}
-
-/* change centering of carousel div in relation to whole page */
-.slider {
-  margin: auto;
-  width: 100%;
-  padding: 10px;
-  padding-left: 180px;
-}
-
-.slide {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  transform: scale(0.7);
-  transition: transform 300ms;
-  opacity: 0.5;
-  gap: 0.8rem;
-  height: 27rem;
-  padding: 4rem 3rem;
-  background-color: #7f8181;
-  border-radius: 3rem;
-  position: relative;
-}
-
-.slide h1 {
-  padding: 30px;
-  font-size: 60px;
-}
-
-.slide .nav-icon {
-  margin-top: 30px;
-}
-
-.activeSlide {
-  transform: scale(0.9);
-  opacity: 1;
+.button {
+  padding: 20px;
   background-color: #f3b718;
+  color: #f7f2f2;
+  font-weight: 800;
+  font-size: 62px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 800px;
+  height: 400px;
+  padding-bottom: -30px;
 }
 
-.arrow {
-  color: #f8d408;
-  position: absolute;
-  cursor: pointer;
-  z-index: 10;
+.button:hover {
+  background-color: #748087;
 }
+
 .arrow-up {
   color: #f8d408;
   z-index: 10;
   right: 45%;
   top: -17%;
+  margin-left: 40%;
 }
 
 .arrow svg {
@@ -111,70 +36,7 @@
   color: #68edff;
 }
 
-.next {
-  right: -8%;
-  top: 39%;
-}
-
-.prev {
-  left: -8%;
-  top: 40%;
-}
-
-svg.arrow-up {
-  margin-left: 10%;
-}
-
-/* Moving the prompt on bottom of contact carousel */
-.prompt h1 {
-  margin: 0;
-  font-size: 50px;
-  color: #2e3e5e;
-  position: absolute;
-  left: 48%;
-  top: 97%;
-}
-
-/* contacts.css or your custom stylesheet */
-.custom-modal {
-  background-color: goldenrod;
-  border: 1px solid #ccc;
-  padding: 100px;
-  width: 900px;
-  height: 500px;
-  margin: 10px 20px 30px;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 2rem;
-}
-
-.custom-modal h2 {
-  font-size: 100px;
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-.custom-modal button {
-  background-color: #48ccac;
-  color: #fff;
-  border: none;
-  border-radius: 2rem;
-  cursor: pointer;
-  margin-right: auto;
-  width: 200px;
-  height: 100px;
-  margin-right: 50px;
-  font-size: 45px;
-}
-
-.custom-modal button:hover {
-  background-color: #48ccac;
-}
-.centered-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#tv {
+  padding-top: 2%;
+  padding-left: 35%;
 }
