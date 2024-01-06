@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { FaUserAlt } from "react-icons/fa";
+import axios from 'axios'; 
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import "./contacts.css";
@@ -8,6 +9,7 @@ import {
   IoIosArrowBack,
   IoIosArrowForward,
   IoIosArrowUp,
+  IoIosArrowDown
 } from "react-icons/io";
 
 const contactList = [
@@ -105,6 +107,25 @@ function Contacts() {
       closeModal(); // Close the modal after initiating the call
     }
   };
+ // Fetch contacts from the server
+ const [contacts, setContacts] = useState([]);
+
+ useEffect(() => {
+  const fetchContacts = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/contacts');
+      setContacts(response.data);
+    } catch (error) {
+      console.error('Error fetching contacts:', error);
+    }
+  };
+
+  fetchContacts();
+}, []);
+
+
+
+
   //   const userChoice = window.confirm('Do you want to call or send an SMS?');
 
   // if (userChoice) {
@@ -169,7 +190,10 @@ function Contacts() {
       <div id="contacts" className="settings">
         <Link to="/" className="linkStyle">
           <div className="up-arrow">
-            <IoIosArrowUp size={90} className="arrow-up" />
+            <IoIosArrowUp size={100} className="arrow-up" />
+          </div>
+          <div className="down-arrow">
+            <IoIosArrowDown size={100} className="arrow-down" />
           </div>
         </Link>
         <div className="slider-call-1">
@@ -189,6 +213,9 @@ function Contacts() {
           <div className="prompt">
             <h1>{contactList[currentIndex].call}</h1>
           </div>
+          <div className="prompt">
+          {selectedContact && <h1>{`Call ${selectedContact.name}?`}</h1>}
+        </div>
         </div>
       </div>
 

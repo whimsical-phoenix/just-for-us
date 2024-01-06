@@ -25,18 +25,37 @@ arrow-up {
   z-index: 10;
   right: 45%;
   top: -17%;
-  margin-left: 40%;
 }
+.arrow-down {
+  color: #f5d25e;
+  z-index: 10;
+  right: 45%;
+  top: -17%;
+}
+
 
 .arrow svg {
   transition: color 300ms;
 }
-
-.arrow svg:hover {
-  color: #68edff;
+svg.arrow-up, svg.arrow-down {
+  vertical-align: middle;
 }
+
+svg.arrow-up {
+  margin-right: 10%;
+}
+
+svg.arrow-down {
+  margin-left: 50%;
+  padding-top: -10%;
+  padding: 1px;
+  margin-top: -22px;
+}
+
+
 
 #tv {
   padding-top: 2%;
   padding-left: 35%;
 }
+

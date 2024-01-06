@@ -60,6 +60,7 @@ body {
   padding: 16px;
   margin: 16px;
   text-align: center;
+  font-size: medium;
 }
 
 .slick-prev, .slick-next {
