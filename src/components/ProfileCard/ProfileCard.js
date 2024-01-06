@@ -208,12 +208,12 @@ const ProfileCardLink = styled(Link)`
 `;
 
 const ProfileCardContainer = styled.div`
-  width: ${(props) => (props.active ? "200px" : "170px")};
-  height: ${(props) => (props.active ? "210px" : "180px")};
+  width: ${(props) => (props.active ? "270px" : "230px")};
+  height: ${(props) => (props.active ? "290px" : "250px")};
   background: ${(props) =>
     props.active ? "#f3b717" : props.backgroundColor || "#7F8181"};
   border-radius: ${(props) =>
-    props.active ? "30%" : props.borderRadius || "35px"};
+    props.active ? "35%" : props.borderRadius || "38px"};
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   margin: 50px;
   padding: 20px;
@@ -230,6 +230,7 @@ const ProfileCardContainer = styled.div`
 
     h3 {
       color: #2f302e;
+      font-size:35px;
     }
 
     .icon-container svg {
@@ -279,7 +280,7 @@ const CardContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 15px;
 
     svg {
       fill: #f3b717;
@@ -287,8 +288,11 @@ const CardContent = styled.div`
   }
 
   h3 {
-    margin: 5px;
+    margin: 15px;
+    margin-left: 3px;
+    padding-left: 5px;
     color: #f3b717;
+    font-size: 35px;
   }
 `;
 

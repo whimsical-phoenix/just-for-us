@@ -5,6 +5,7 @@
 .linkStyle {
   text-decoration: none;
   color: #fff;
+  pointer-events: none;
 }
 
 #entertainment {
@@ -85,15 +86,22 @@
 }
 
 .arrow {
-  color: #f8d408;
+  color: #e7c81e;
   position: absolute;
   cursor: pointer;
   z-index: 10;
 }
 .arrow-up {
-  color: #f8d408;
+  color: #f9c844;
   z-index: 10;
   right: 45%;
+  top: -17%;
+ 
+}
+.arrow-down {
+  color: #f5d25e;
+  z-index: 10;
+  left: 45%;
   top: -17%;
 }
 
@@ -115,8 +123,19 @@
   top: 40%;
 }
 
+svg.arrow-up, svg.arrow-down {
+  vertical-align: middle;
+}
+
 svg.arrow-up {
-  margin-left: 10%;
+  margin-right: 2.8%;
+}
+
+svg.arrow-down {
+  margin-left: 52.5%;
+  padding-top: -10%;
+  padding: 1px;
+  margin-top: -22px;
 }
 
 /* Moving the prompt on bottom of contact carousel */
