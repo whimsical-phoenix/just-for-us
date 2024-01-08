@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Slider from "react-slick";
 import { FaUserAlt } from "react-icons/fa";
-import axios from 'axios'; 
+// import axios from 'axios'; 
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import "./contacts.css";
@@ -108,20 +108,20 @@ function Contacts() {
     }
   };
  // Fetch contacts from the server
- const [contacts, setContacts] = useState([]);
+//  const [contacts, setContacts] = useState([]);
 
- useEffect(() => {
-  const fetchContacts = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/contacts');
-      setContacts(response.data);
-    } catch (error) {
-      console.error('Error fetching contacts:', error);
-    }
-  };
+//  useEffect(() => {
+//   const fetchContacts = async () => {
+//     try {
+//       const response = await axios.get('http://localhost:5000/api/contacts');
+//       setContacts(response.data);
+//     } catch (error) {
+//       console.error('Error fetching contacts:', error);
+//     }
+//   };
 
-  fetchContacts();
-}, []);
+//   fetchContacts();
+// }, []);
 
 
 
