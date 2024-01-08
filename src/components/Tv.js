@@ -169,7 +169,7 @@ function Television() {
           onClick={handleTvButtonClick}
           onMouseEnter={handleButtonHover}
           onMouseLeave={handleButtonHover}>
-          LIVE TV
+          <h1 className="card-name">LIVE TV</h1>
         </button>
       </div>
     </div>

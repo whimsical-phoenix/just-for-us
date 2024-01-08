@@ -419,10 +419,10 @@ import CallHelpButtonComponent from "../components/CallHelpButton";
 import Contacts from "../components/Contacts";
 import { GiFilmSpool } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
-// import { GrYoga } from "react-icons/gr";
-import { IoSettings } from "react-icons/io5";
+import { GrGallery } from "react-icons/gr";
+import { GrYoga } from "react-icons/gr";
 import { FaLightbulb } from "react-icons/fa";
-import { MdOutlineSportsMartialArts } from "react-icons/md";
+// import { MdOutlineSportsMartialArts } from "react-icons/md";
 import Lights from "../components/Lights";
 import Entertainment from "../components/Entertainment";
 import Television from "../components/Tv";
@@ -525,7 +525,7 @@ const cardData = [
     page: <Television />,
   },
   {
-    icon: <MdOutlineSportsMartialArts size={150} />,
+    icon: <GrYoga size={150} />,
     title: "ACTIVITIES",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
@@ -539,9 +539,9 @@ const cardData = [
   },
   {
     // link: "/garden-loft-app/services",
-    icon: <IoSettings size={150} />,
-    title: "SETTINGS",
-    textBelowCard: "Change Settings?",
+    icon: <GrGallery size={150} />,
+    title: "GALLERY",
+    textBelowCard: "View Gallery?",
   },
   {
     icon: <FaPhoneAlt size={150} />,

@@ -187,7 +187,7 @@ function Entertainment() {
                   onClick={() => openModal(card)}
                   className={idx === cardIndex ? "slide activeSlide" : "slide"}>
                   {card.icon}
-                  <h1>{card.name}</h1>
+                  <h1 className="card-name">{card.name}</h1>
                 </div>
               ))}
             </Slider>

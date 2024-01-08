@@ -153,7 +153,7 @@ function Lights() {
                       onClick={toggleColor}
                     />
                   )}
-                  <h1>{card.name}</h1>
+                  <h1 className="card-name">{card.name}</h1>
                 </div>
               ))}
             </Slider>

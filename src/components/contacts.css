@@ -154,6 +154,10 @@ svg.arrow-down {
   top: 97%;
 }
 
+.card-name {
+  color: black;
+}
+
 /* contacts.css or your custom stylesheet */
 .custom-modal {
   background-color: goldenrod;
