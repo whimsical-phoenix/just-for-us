@@ -105,6 +105,22 @@
   top: -17%;
 }
 
+
+svg.arrow-up, svg.arrow-down {
+  vertical-align: middle;
+}
+
+svg.arrow-up {
+  margin-right: 45%;
+}
+
+svg.arrow-down {
+  margin-left: 52.5%;
+  padding-top: -10%;
+  padding: 1px;
+  margin-top: -22px;
+}
+
 .arrow svg {
   transition: color 300ms;
 }
@@ -112,6 +128,7 @@
 .arrow svg:hover {
   color: #68edff;
 }
+
 
 .next {
   right: -8%;
@@ -123,20 +140,7 @@
   top: 40%;
 }
 
-svg.arrow-up, svg.arrow-down {
-  vertical-align: middle;
-}
 
-svg.arrow-up {
-  margin-right: 2.8%;
-}
-
-svg.arrow-down {
-  margin-left: 52.5%;
-  padding-top: -10%;
-  padding: 1px;
-  margin-top: -22px;
-}
 
 /* Moving the prompt on bottom of contact carousel */
 .prompt h1 {

@@ -169,13 +169,14 @@ function Entertainment() {
     <>
       <div id="entertainment" className="settings">
         <Link to="/" className="linkStyle">
+        <div className="arrow-container">
         <div className="up-arrow">
             <IoIosArrowUp size={100} className="arrow-up" />
           </div>
           <div className="down-arrow">
             <IoIosArrowDown size={100} className="arrow-down" />
           </div>
-          
+          </div>
         </Link>
         <div className="slider-call-1">
           <div className="slider">

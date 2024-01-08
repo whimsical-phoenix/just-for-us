@@ -5,6 +5,7 @@
 .linkStyle {
   text-decoration: none;
   color: #fff;
+  pointer-events: none;
 }
 
 #lights {
@@ -100,10 +101,23 @@
   left: -8%;
   top: 40%;
 }
+svg.arrow-up, svg.arrow-down {
+  vertical-align: middle;
+}
 
 svg.arrow-up {
-  margin-left: 10%;
+  margin-right: 45%;
 }
+
+svg.arrow-down {
+  margin-left: 52.5%;
+  padding-top: -10%;
+  padding: 1px;
+  margin-top: -22px;
+}
+
+
+
 
 /* Moving the prompt on bottom of contact carousel */
 .prompt h1 {
