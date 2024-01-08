@@ -509,23 +509,43 @@ const CustomPrevArrow = ({ onClick }) => (
 );
 
 const TextBelowCard = styled.h1`
-  margin: 10px;
+  margin:0;
   font-size: 46px;
   color: #2e3e5e;
-  position: initial;
+  position:relative;
+  left: 0%;
+  top: 95%;
   display: flex;
+  
+`;
+const SpaceBeforeBelowCard = styled.h1`
+  margin:0;
+  font-size: 46px;
+  color: #FCF8E3;
+  position:relative;
+  left: 0%;
+  top: 95%;
+  display: flex;
+  
+`;
+const PromptDiv = styled.h1`
+ 
+  display: flex;
+  
 `;
 
+const isIconActive = true;
 const cardData = [
   {
     // link: "/garden-loft-app/entertainment",
     icon: <TvIcon />,
     title: "TV",
+    spaceBeforeBelowCard: ".. ..",
     textBelowCard: "Watch TV?",
     page: <Television />,
   },
   {
-    icon: <GrYoga size={150} />,
+    icon: <GrYoga size={150} color={isIconActive ? "black" : "yellow"} />,
     title: "ACTIVITIES",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
@@ -539,8 +559,9 @@ const cardData = [
   },
   {
     // link: "/garden-loft-app/services",
-    icon: <GrGallery size={150} />,
+    icon: <GrGallery size={150} color={isIconActive ? "black" : "yellow"} />,
     title: "GALLERY",
+    spaceBeforeBelowCard: "..",
     textBelowCard: "View Gallery?",
   },
   {
@@ -596,10 +617,14 @@ const Home = () => {
                   icon={card.icon}
                   title={card.title}
                   active={index === centerCardIndex}
-                />
+                /> 
+                <PromptDiv>{index === centerCardIndex && (
+                  <SpaceBeforeBelowCard>{card.spaceBeforeBelowCard}</SpaceBeforeBelowCard>
+                )}
                 {index === centerCardIndex && (
                   <TextBelowCard>{card.textBelowCard}</TextBelowCard>
-                )}
+                )}</PromptDiv>
+               
               </CardColumn>
             ))}
           </Slider>
