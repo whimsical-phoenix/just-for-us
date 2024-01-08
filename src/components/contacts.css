@@ -5,6 +5,7 @@
 .linkStyle {
   text-decoration: none;
   color: #fff;
+  pointer-events: none;
 }
 
 #contacts {
@@ -133,7 +134,7 @@ svg.arrow-up, svg.arrow-down {
 }
 
 svg.arrow-up {
-  margin-right: 2.7%;
+  margin-right: 45%;
 }
 
 svg.arrow-down {

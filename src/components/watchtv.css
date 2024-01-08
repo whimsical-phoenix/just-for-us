@@ -1,5 +1,8 @@
-arrow-up {
-  color: black;
+
+.linkStyle {
+  text-decoration: none;
+  color: #fff;
+  pointer-events: none;
 }
 
 .button {
@@ -37,12 +40,13 @@ arrow-up {
 .arrow svg {
   transition: color 300ms;
 }
-svg.arrow-up, svg.arrow-down {
+/* svg.arrow-up, svg.arrow-down {
   vertical-align: middle;
-}
+} */
 
 svg.arrow-up {
-  margin-right: 10%;
+  margin-left: 52.5%;
+
 }
 
 svg.arrow-down {
