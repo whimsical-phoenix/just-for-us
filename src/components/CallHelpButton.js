@@ -137,7 +137,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontWeight="700"
           style={{ display: "flex", alignItems: "center", padding: "0 20px" }}>
           <FaPlus size={60} />
-          <div style={{ paddingLeft: "10px" }}>CALL SUSAN?</div>
+          <div style={{ paddingLeft: "10px" }}>CALL SUSAN</div>
         </Typography>
       </CallHelpButton>
 
