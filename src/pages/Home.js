@@ -1115,7 +1115,7 @@ const HomeContainer = styled.div`
 
 const CarouselWrapper = styled.div`
   margin: 0 auto;
-  max-width: 2500px;
+  max-width: 2400px;
   max-height: 800px;
   justify-content: center;
   display: block;
@@ -1225,13 +1225,14 @@ const cardData = [
   {
     icon: <TvIcon />,
     title: "TV",
-    spaceBeforeBelowCard: ".. ..",
+    spaceBeforeBelowCard: ".. ....",
     textBelowCard: "Watch TV?",
     page: <Television />,
   },
   {
     icon: <GiWeightLiftingUp size={150} />,
     title: "ACTIVITIES",
+    spaceBeforeBelowCard: "..",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
   },
@@ -1244,6 +1245,7 @@ const cardData = [
   {
     icon: <IoMdPhotos size={150} />,
     title: "GALLERY",
+    spaceBeforeBelowCard: ".....",
     textBelowCard: "View Gallery?",
   },
   {
@@ -1255,6 +1257,7 @@ const cardData = [
   {
     icon: <FaLightbulb size={150} />,
     title: "LIGHTS",
+    spaceBeforeBelowCard: "... ..",
     textBelowCard: "Change Lights?",
     page: <Lights />,
   },
