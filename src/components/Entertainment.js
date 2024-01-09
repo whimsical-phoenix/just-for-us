@@ -157,10 +157,10 @@ const Entertainment = React.forwardRef((props, ref) => {
         <Link to="/" className="linkStyle">
           <div className="arrow-container">
             <div className="up-arrow">
-              <IoIosArrowUp size={100} className="arrow-up" />
+              <IoIosArrowUp size={90} className="arrow-up" />
             </div>
             <div className="down-arrow">
-              <IoIosArrowDown size={100} className="arrow-down" />
+              <IoIosArrowDown size={90} className="arrow-down" />
             </div>
           </div>
         </Link>
