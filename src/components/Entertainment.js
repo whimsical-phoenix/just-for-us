@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { FaUserAlt } from "react-icons/fa";
 import Modal from "react-modal";
@@ -7,7 +7,7 @@ import {
   IoIosArrowBack,
   IoIosArrowForward,
   IoIosArrowUp,
-  IoIosArrowDown
+  IoIosArrowDown,
 } from "react-icons/io";
 import "./entertainment.css";
 
@@ -56,8 +56,6 @@ const contactList = [
   },
 ];
 
-//Create a useState for cycling names through the prompt div on the bottom
-
 // Custom hook for handling the modal
 const useContactModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -80,24 +78,12 @@ const useContactModal = () => {
   };
 };
 
-function Entertainment() {
-  // handle Help Button
-  // const handleHelpClick = () => {
-  //   const phoneNumber = "+1234556778";
-  //   const userChoice = window.confirm("Do you want to call or send an SMS?");
-
-  //   if (userChoice) {
-  //     window.location.href = `tel:${phoneNumber}`;
-  //   } else {
-  //     window.location.href = `sms:${phoneNumber}`;
-  //   }
-  //   const telUrl = `tel:${phoneNumber}`;
-  //   window.location.href = telUrl;
-  // };
-
+const Entertainment = React.forwardRef((props, ref) => {
   const { modalIsOpen, selectedContact, openModal, closeModal } =
     useContactModal();
   const [cardIndex, setCardIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   //call using window
   const contactCall = () => {
     if (selectedContact) {
@@ -106,16 +92,6 @@ function Entertainment() {
       closeModal(); // Close the modal after initiating the call
     }
   };
-  //   const userChoice = window.confirm('Do you want to call or send an SMS?');
-
-  // if (userChoice) {
-  //   window.location.href = `tel:${phoneNumber}`;
-  // } else {
-  //   window.location.href = `sms:${phoneNumber}`;
-  // }
-  //   const telUrl = `tel:${phoneNumber}`;
-  //   window.location.href = telUrl;
-  // };
 
   // Arrow Functions
   const NextArrow = ({ onClick }) => {
@@ -138,6 +114,19 @@ function Entertainment() {
       </div>
     );
   };
+
+  // Function to handle cycling through the array
+  const nextContact = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % contactList.length);
+  };
+
+  // Function to handle cycling through the array
+  const prevContact = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + contactList.length) % contactList.length
+    );
+  };
+
   //slides effect
   const slidesSettings = {
     infinite: true,
@@ -151,31 +140,28 @@ function Entertainment() {
     beforeChange: (current, next) => setCardIndex(next),
   };
 
-  // Use State to set prompt name under contact cards
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Attach the ref to the component
+  React.useImperativeHandle(ref, () => ({
+    prevContact,
+    // Add more methods if needed
+  }));
 
-  // Function to handle cycling through the array
-  const nextContact = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % contactList.length);
-  };
-  // Function to handle cycling through the array
-  const prevContact = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + contactList.length) % contactList.length
-    );
-  };
+  useEffect(() => {
+    // Ensure currentIndex is updated when cardIndex changes
+    setCurrentIndex(cardIndex);
+  }, [cardIndex]);
 
   return (
     <>
       <div id="entertainment" className="settings">
         <Link to="/" className="linkStyle">
-        <div className="arrow-container">
-        <div className="up-arrow">
-            <IoIosArrowUp size={100} className="arrow-up" />
-          </div>
-          <div className="down-arrow">
-            <IoIosArrowDown size={100} className="arrow-down" />
-          </div>
+          <div className="arrow-container">
+            <div className="up-arrow">
+              <IoIosArrowUp size={100} className="arrow-up" />
+            </div>
+            <div className="down-arrow">
+              <IoIosArrowDown size={100} className="arrow-down" />
+            </div>
           </div>
         </Link>
         <div className="slider-call-1">
@@ -214,6 +200,6 @@ function Entertainment() {
       </Modal>
     </>
   );
-}
+});
 
 export default Entertainment;

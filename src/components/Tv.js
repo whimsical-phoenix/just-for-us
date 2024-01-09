@@ -141,7 +141,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./watchtv.css";
-import { IoIosArrowUp, IoIosArrowDown} from "react-icons/io";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 function Television() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
@@ -155,14 +155,14 @@ function Television() {
   };
   return (
     <div>
-       <Link to="/" className="linkStyle">
-          <div className="up-arrow">
-            <IoIosArrowUp size={100} className="arrow-up" />
-          </div>
-          <div className="down-arrow">
-            <IoIosArrowDown size={100} className="arrow-down" />
-          </div>
-        </Link>
+      <Link to="/" className="linkStyle">
+        <div className="up-arrow">
+          <IoIosArrowUp size={100} className="arrow-up" />
+        </div>
+        <div className="down-arrow">
+          <IoIosArrowDown size={100} className="arrow-down" />
+        </div>
+      </Link>
       <div id="tv" className="settings">
         <button
           className={`button ${isButtonHovered ? "hovered" : ""}`}
