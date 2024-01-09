@@ -9,13 +9,14 @@ import { FaPlus } from "react-icons/fa";
 const StyledButtonAlignment = styled(Typography)`
   margin-top: 30px;
   position: absolute;
-  bottom: 40px;
+  bottom: 80px;
   display: flex;
   justify-content: "space-between";
 `;
 
 const CallHelpButton = styled.button`
   margin-top: 30px;
+  margin-bottom: 20px;
   padding: 10px;
   background-color: ${({ active }) => (active ? "#ff4d4d" : "#59acce")};
   color: ${({ active }) => (active ? "white" : "#2d3e5f")};
@@ -43,7 +44,7 @@ const CallHelpButton = styled.button`
 const BottomCenterButtonContainer = styled.div`
   position: fixed;
   top: 20px;
-  bottom: 10px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
