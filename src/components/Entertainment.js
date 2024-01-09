@@ -121,7 +121,7 @@ function Entertainment() {
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
-        <div onClick={() => nextContact()}>
+        <div onClick={nextContact}>
           {" "}
           <IoIosArrowForward size={170} />
         </div>
@@ -132,7 +132,7 @@ function Entertainment() {
   const PrevArrow = ({ onClick }) => {
     return (
       <div className="arrow prev" onClick={onClick}>
-        <div onClick={() => prevContact()}>
+        <div onClick={prevContact}>
           <IoIosArrowBack size={170} />
         </div>
       </div>

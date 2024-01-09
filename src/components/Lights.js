@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import {
   IoIosArrowBack,
   IoIosArrowForward,
   IoIosArrowUp,
-  IoIosArrowDown
+  IoIosArrowDown,
 } from "react-icons/io";
 import { BsLightbulbFill, BsLightbulb } from "react-icons/bs";
 import "./lights.css";
@@ -41,38 +41,21 @@ const contactList = [
   },
 ];
 
-function Lights() {
+const Lights = () => {
   const [cardIndex, setCardIndex] = useState(0);
-  // handle Help Button
-  // const handleHelpClick = () => {
-  //   const phoneNumber = "+1234556778";
-  //   const userChoice = window.confirm("Do you want to call or send an SMS?");
+  const [isYellow, setIsYellow] = useState(false);
 
-  //   if (userChoice) {
-  //     window.location.href = `tel:${phoneNumber}`;
-  //   } else {
-  //     window.location.href = `sms:${phoneNumber}`;
-  //   }
-  //   const telUrl = `tel:${phoneNumber}`;
-  //   window.location.href = telUrl;
-  // };
-  //   const userChoice = window.confirm('Do you want to call or send an SMS?');
+  const toggleColor = () => {
+    setIsYellow((prevIsYellow) => !prevIsYellow);
+  };
 
-  // if (userChoice) {
-  //   window.location.href = `tel:${phoneNumber}`;
-  // } else {
-  //   window.location.href = `sms:${phoneNumber}`;
-  // }
-  //   const telUrl = `tel:${phoneNumber}`;
-  //   window.location.href = telUrl;
-  // };
-
-  // Arrow Functions
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
-        <div onClick={() => nextContact()}>
-          {" "}
+        <div
+          onClick={() =>
+            setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length)
+          }>
           <IoIosArrowForward size={170} />
         </div>
       </div>
@@ -82,13 +65,19 @@ function Lights() {
   const PrevArrow = ({ onClick }) => {
     return (
       <div className="arrow prev" onClick={onClick}>
-        <div onClick={() => prevContact()}>
+        <div
+          onClick={() =>
+            setCardIndex(
+              (prevIndex) =>
+                (prevIndex - 1 + contactList.length) % contactList.length
+            )
+          }>
           <IoIosArrowBack size={170} />
         </div>
       </div>
     );
   };
-  //slides effect
+
   const slidesSettings = {
     infinite: true,
     lazyLoad: true,
@@ -98,73 +87,71 @@ function Lights() {
     centerPadding: 0,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    beforeChange: (current, next) => setCardIndex(next),
   };
 
-  // Use State to set prompt name under contact cards
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedCardIndex, setSelectedCardIndex] = useState(0);
 
-  // Function to handle cycling through the array
-  const nextContact = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % contactList.length);
-  };
-  // Function to handle cycling through the array
-  const prevContact = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + contactList.length) % contactList.length
-    );
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowLeft") {
+      setCardIndex(
+        (prevIndex) => (prevIndex - 1 + contactList.length) % contactList.length
+      );
+    } else if (event.key === "ArrowRight") {
+      setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length);
+    } else if (event.key === "Enter") {
+      // Handle the logic to toggle light on or off for the selected card
+      console.log(
+        "Toggle light for card:",
+        contactList[selectedCardIndex].name
+      );
+    }
   };
 
-  // Makes lights turn yellow
-  const [isYellow, setIsYellow] = useState(false);
-  const toggleColor = () => {
-    setIsYellow((prevIsYellow) => !prevIsYellow);
-  };
+  useEffect(() => {
+    setSelectedCardIndex(cardIndex);
+  }, [cardIndex]);
 
   return (
-    <>
-      <div id="contacts" className="settings">
-        <Link to="/" className="linkStyle">
-          <div className="up-arrow">
-            <IoIosArrowUp size={100} className="arrow-up" />
-          </div>
-          <div className="down-arrow">
-            <IoIosArrowDown size={100} className="arrow-down" />
-          </div>
-        </Link>
-        <div className="slider-call-1">
-          <div className="slider">
-            <Slider className="linkStyle" {...slidesSettings}>
-              {contactList.map((card, idx) => (
-                <div
-                  key={card.id}
-                  className={idx === cardIndex ? "slide activeSlide" : "slide"}>
-                  {/* {card.icon} */}
-                  {isYellow ? (
-                    <BsLightbulbFill
-                      size={230}
-                      color="yellow"
-                      onClick={toggleColor}
-                    />
-                  ) : (
-                    <BsLightbulb
-                      size={230}
-                      color="white"
-                      onClick={toggleColor}
-                    />
-                  )}
-                  <h1 className="card-name">{card.name}</h1>
-                </div>
-              ))}
-            </Slider>
-          </div>
-          <div className="prompt">
-            <h1>{contactList[currentIndex].call}</h1>
-          </div>
+    <div
+      id="contacts"
+      className="settings"
+      onKeyDown={handleKeyDown}
+      tabIndex="0">
+      <Link to="/" className="linkStyle">
+        <div className="up-arrow">
+          <IoIosArrowUp size={100} className="arrow-up" />
+        </div>
+        <div className="down-arrow">
+          <IoIosArrowDown size={100} className="arrow-down" />
+        </div>
+      </Link>
+      <div className="slider-call-1">
+        <div className="slider">
+          <Slider className="linkStyle" {...slidesSettings}>
+            {contactList.map((card, idx) => (
+              <div
+                key={card.id}
+                className={idx === cardIndex ? "slide activeSlide" : "slide"}>
+                {isYellow ? (
+                  <BsLightbulbFill
+                    size={230}
+                    color="yellow"
+                    onClick={toggleColor}
+                  />
+                ) : (
+                  <BsLightbulb size={230} color="white" onClick={toggleColor} />
+                )}
+                <h1 className="card-name">{card.name}</h1>
+              </div>
+            ))}
+          </Slider>
+        </div>
+        <div className="prompt">
+          <h1>{contactList[cardIndex].call}</h1>
         </div>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default Lights;

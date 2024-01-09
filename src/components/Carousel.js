@@ -155,6 +155,7 @@ const CarouselContainer = styled.div`
   justify-content: center;
   width: 100%;
   overflow: hidden;
+  border: ${(props) => (props.active ? "5px solid yellow" : "none")};
 `;
 
 const CarouselContent = styled.div`
@@ -164,13 +165,14 @@ const CarouselContent = styled.div`
 `;
 
 const CarouselCard = styled.div`
+  display: flex;
   flex: 0 0 20%; /* Display five cards at a time */
   margin: 0 10px;
   padding: 30px;
   background-color: ${(props) => (props.active ? "#f3b717" : "gray")};
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;

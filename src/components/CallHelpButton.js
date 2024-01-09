@@ -17,8 +17,7 @@ const StyledButtonAlignment = styled(Typography)`
 const CallHelpButton = styled.button`
   margin-top: 30px;
   padding: 10px;
-
-  // background-color: ${({ active }) => (active ? "#ff4d4d" : "#59acce")};
+  background-color: ${({ active }) => (active ? "#ff4d4d" : "#59acce")};
   color: ${({ active }) => (active ? "white" : "#2d3e5f")};
   border: none;
   border-radius: 20px;
