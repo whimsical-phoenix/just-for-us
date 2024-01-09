@@ -1093,7 +1093,6 @@ import Contacts from "../components/Contacts";
 import { GiFilmSpool } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
 
-
 import { IoMdPhotos } from "react-icons/io";
 import { GiWeightLiftingUp } from "react-icons/gi";
 
@@ -1125,7 +1124,7 @@ const CarouselWrapper = styled.div`
   display: block;
 
   /* Add styles for border and opacity */
-  border: ${(props) => (props.active ? "8px solid yellow" : "none")};
+  // border: ${(props) => (props.active ? "8px solid yellow" : "none")};
   opacity: ${(props) => (props.active ? 1 : 0.5)};
   border-radius: 85px;
   transition: border 0.3s ease, opacity 0.3s ease;
@@ -1234,7 +1233,6 @@ const cardData = [
     page: <Television />,
   },
   {
-
     icon: <GiWeightLiftingUp size={150} />,
 
     title: "ACTIVITIES",
@@ -1249,7 +1247,6 @@ const cardData = [
     page: <Entertainment />,
   },
   {
-
     icon: <IoMdPhotos size={150} />,
     title: "GALLERY",
     spaceBeforeBelowCard: ".....",
