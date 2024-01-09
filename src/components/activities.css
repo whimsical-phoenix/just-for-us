@@ -103,7 +103,8 @@
   right: 45%;
   top: -17%;
 }
-svg.arrow-up, svg.arrow-down {
+svg.arrow-up,
+svg.arrow-down {
   vertical-align: middle;
 }
 svg.arrow-up {
@@ -134,8 +135,6 @@ svg.arrow-down {
   left: -8%;
   top: 40%;
 }
-
-
 
 /* Moving the prompt on bottom of contact carousel */
 .prompt h1 {

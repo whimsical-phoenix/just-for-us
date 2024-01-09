@@ -408,257 +408,26 @@
 
 // export default Home;
 
-import React, { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
-import ProfileCard from "../components/ProfileCard/ProfileCard";
-import { ChevronLeftIcon, ChevronRightIcon, TvIcon } from "../components/icons";
-import CallHelpButtonComponent from "../components/CallHelpButton";
-import Contacts from "../components/Contacts";
-import { GiFilmSpool } from "react-icons/gi";
-import { FaPhoneAlt } from "react-icons/fa";
-import { GrGallery } from "react-icons/gr";
-import { GrYoga } from "react-icons/gr";
-import { FaLightbulb } from "react-icons/fa";
-// import { MdOutlineSportsMartialArts } from "react-icons/md";
-import Lights from "../components/Lights";
-import Entertainment from "../components/Entertainment";
-import Television from "../components/Tv";
-import Activities from "../components/Activities";
-
-const HomeContainer = styled.div`
-  position: relative;
-  top: 150px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  min-height: 50vh;
-  text-align: center;
-`;
-
-const CarouselWrapper = styled.div`
-  margin: 0 auto;
-  max-width: 2500px;
-  justify-content: center;
-  display: block;
-`;
-
-const CardColumn = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-`;
-
-const CustomArrowButton = styled.div`
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-
-  &:active {
-    transform: translateY(-50%), scale(0.95);
-  }
-`;
-
-const StyledProfileCard = styled(ProfileCard)`
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-  display: flex;
-  color: black;
-
-  &:hover {
-    transform: scale(1.1);
-    .icon-container {
-      svg {
-        fill: black;
-      }
-    }
-  }
-
-  &.slick-center {
-    transform: scale(1.5);
-    background: yellow;
-    .icon-container {
-      svg {
-        fill: #000; /* Change the icon color for the center card */
-      }
-    }
-  }
-`;
-
-const CustomNextArrow = ({ onClick }) => (
-  <CustomArrowButton onClick={onClick} style={{ right: -100 }}>
-    <ChevronRightIcon />
-  </CustomArrowButton>
-);
-
-const CustomPrevArrow = ({ onClick }) => (
-  <CustomArrowButton onClick={onClick} style={{ left: -100 }}>
-    <ChevronLeftIcon />
-  </CustomArrowButton>
-);
-
-const TextBelowCard = styled.h1`
-  margin:0;
-  font-size: 46px;
-  color: #2e3e5e;
-  position:relative;
-  left: 0%;
-  top: 95%;
-  display: flex;
-  
-`;
-const SpaceBeforeBelowCard = styled.h1`
-  margin:0;
-  font-size: 46px;
-  color: #FCF8E3;
-  position:relative;
-  left: 0%;
-  top: 95%;
-  display: flex;
-  
-`;
-const PromptDiv = styled.h1`
- 
-  display: flex;
-  
-`;
-
-const isIconActive = true;
-const cardData = [
-  {
-    // link: "/garden-loft-app/entertainment",
-    icon: <TvIcon />,
-    title: "TV",
-    spaceBeforeBelowCard: ".. ..",
-    textBelowCard: "Watch TV?",
-    page: <Television />,
-  },
-  {
-    icon: <GrYoga size={150} color={isIconActive ? "black" : "yellow"} />,
-    title: "ACTIVITIES",
-    textBelowCard: "Join an Activity?",
-    page: <Activities />,
-  },
-  {
-    // link: "/garden-loft-app/services",
-    icon: <GiFilmSpool size={150} />,
-    title: "ENTERTAINMENT",
-    textBelowCard: "Watch Entertainment?",
-    page: <Entertainment />,
-  },
-  {
-    // link: "/garden-loft-app/services",
-    icon: <GrGallery size={150} color={isIconActive ? "black" : "yellow"} />,
-    title: "GALLERY",
-    spaceBeforeBelowCard: "..",
-    textBelowCard: "View Gallery?",
-  },
-  {
-    icon: <FaPhoneAlt size={150} />,
-    title: "VIDEO CALL",
-    textBelowCard: "Make a Video Call?",
-    page: <Contacts />,
-  },
-  {
-    // link: "/garden-loft-app/smart-loft",
-    icon: <FaLightbulb size={150} />,
-    title: "LIGHTS",
-    textBelowCard: "Change Lights?",
-    page: <Lights />,
-  },
-];
-
-const Home = () => {
-  const settings = {
-    centerMode: true,
-    centerPadding: "0",
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    // dots: true,
-    nextArrow: <CustomNextArrow data-clickable="true" />,
-    prevArrow: <CustomPrevArrow data-clickable="true" />,
-    beforeChange: (current, next) => {
-      // Disable hover effect for all cards
-      setDisableHover(true);
-    },
-    afterChange: (current) => {
-      // Enable hover effect for the center card
-      setDisableHover(false);
-      // Update the index of the center card
-      setCenterCardIndex(current);
-    },
-  };
-
-  const [disableHover, setDisableHover] = useState(false);
-  const [centerCardIndex, setCenterCardIndex] = useState(0);
-
-  return (
-    <>
-      <HomeContainer disableHover={disableHover}>
-        <CarouselWrapper>
-          <Slider {...settings}>
-            {cardData.map((card, index) => (
-              <CardColumn key={index}>
-                <StyledProfileCard
-                  link={card.link}
-                  icon={card.icon}
-                  title={card.title}
-                  active={index === centerCardIndex}
-                /> 
-                <PromptDiv>{index === centerCardIndex && (
-                  <SpaceBeforeBelowCard>{card.spaceBeforeBelowCard}</SpaceBeforeBelowCard>
-                )}
-                {index === centerCardIndex && (
-                  <TextBelowCard>{card.textBelowCard}</TextBelowCard>
-                )}</PromptDiv>
-               
-              </CardColumn>
-            ))}
-          </Slider>
-        </CarouselWrapper>
-      </HomeContainer>
-      {centerCardIndex === 0 && <Television />}
-      {centerCardIndex === 1 && <Activities />}
-      {centerCardIndex === 2 && <Entertainment />}
-
-      {centerCardIndex === 5 && <Lights />}
-      {centerCardIndex === 4 && <Contacts />}
-      <CallHelpButtonComponent />
-    </>
-  );
-};
-
-export default Home;
-
+// <<<<<<< Updated upstream
 // import React, { useState } from "react";
 // import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 // import styled from "styled-components";
 // import ProfileCard from "../components/ProfileCard/ProfileCard";
-// import {
-//   ChevronLeftIcon,
-//   ChevronRightIcon,
-//   ContactsIcon,
-//   TvIcon,
-//   ServicesIcon,
-//   ScheduleIcon,
-// } from "../components/icons";
+// import { ChevronLeftIcon, ChevronRightIcon, TvIcon } from "../components/icons";
 // import CallHelpButtonComponent from "../components/CallHelpButton";
 // import Contacts from "../components/Contacts";
+// import { GiFilmSpool } from "react-icons/gi";
+// import { FaPhoneAlt } from "react-icons/fa";
+// import { GrGallery } from "react-icons/gr";
+// import { GrYoga } from "react-icons/gr";
+// import { FaLightbulb } from "react-icons/fa";
+// // import { MdOutlineSportsMartialArts } from "react-icons/md";
+// import Lights from "../components/Lights";
+// import Entertainment from "../components/Entertainment";
+// import Television from "../components/Tv";
+// import Activities from "../components/Activities";
 
 // const HomeContainer = styled.div`
 //   position: relative;
@@ -675,6 +444,244 @@ export default Home;
 //   margin: 0 auto;
 //   max-width: 2500px;
 //   justify-content: center;
+//   display: block;
+// `;
+
+// const CardColumn = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+//   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+// `;
+
+// const CustomArrowButton = styled.div`
+//   width: 80px;
+//   height: 80px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   z-index: 1;
+
+//   &:active {
+//     transform: translateY(-50%), scale(0.95);
+//   }
+// `;
+
+// const StyledProfileCard = styled(ProfileCard)`
+//   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+//   display: flex;
+//   color: black;
+
+//   &:hover {
+//     transform: scale(1.1);
+//     .icon-container {
+//       svg {
+//         fill: black;
+//       }
+//     }
+//   }
+
+//   &.slick-center {
+//     transform: scale(1.5);
+//     background: yellow;
+//     .icon-container {
+//       svg {
+//         fill: #000; /* Change the icon color for the center card */
+//       }
+//     }
+//   }
+// `;
+
+// const CustomNextArrow = ({ onClick }) => (
+//   <CustomArrowButton onClick={onClick} style={{ right: -100 }}>
+//     <ChevronRightIcon />
+//   </CustomArrowButton>
+// );
+
+// const CustomPrevArrow = ({ onClick }) => (
+//   <CustomArrowButton onClick={onClick} style={{ left: -100 }}>
+//     <ChevronLeftIcon />
+//   </CustomArrowButton>
+// );
+
+// const TextBelowCard = styled.h1`
+//   margin:0;
+//   font-size: 46px;
+//   color: #2e3e5e;
+//   position:relative;
+//   left: 0%;
+//   top: 95%;
+//   display: flex;
+  
+// `;
+// const SpaceBeforeBelowCard = styled.h1`
+//   margin:0;
+//   font-size: 46px;
+//   color: #FCF8E3;
+//   position:relative;
+//   left: 0%;
+//   top: 95%;
+//   display: flex;
+  
+// `;
+// const PromptDiv = styled.h1`
+ 
+//   display: flex;
+  
+// `;
+
+// const isIconActive = true;
+// const cardData = [
+//   {
+//     // link: "/garden-loft-app/entertainment",
+//     icon: <TvIcon />,
+//     title: "TV",
+//     spaceBeforeBelowCard: ".. ..",
+//     textBelowCard: "Watch TV?",
+//     page: <Television />,
+//   },
+//   {
+//     icon: <GrYoga size={150} color={isIconActive ? "black" : "yellow"} />,
+//     title: "ACTIVITIES",
+//     textBelowCard: "Join an Activity?",
+//     page: <Activities />,
+//   },
+//   {
+//     // link: "/garden-loft-app/services",
+//     icon: <GiFilmSpool size={150} />,
+//     title: "ENTERTAINMENT",
+//     textBelowCard: "Watch Entertainment?",
+//     page: <Entertainment />,
+//   },
+//   {
+//     // link: "/garden-loft-app/services",
+//     icon: <GrGallery size={150} color={isIconActive ? "black" : "yellow"} />,
+//     title: "GALLERY",
+//     spaceBeforeBelowCard: "..",
+//     textBelowCard: "View Gallery?",
+//   },
+//   {
+//     icon: <FaPhoneAlt size={150} />,
+//     title: "VIDEO CALL",
+//     textBelowCard: "Make a Video Call?",
+//     page: <Contacts />,
+//   },
+//   {
+//     // link: "/garden-loft-app/smart-loft",
+//     icon: <FaLightbulb size={150} />,
+//     title: "LIGHTS",
+//     textBelowCard: "Change Lights?",
+//     page: <Lights />,
+//   },
+// ];
+
+// const Home = () => {
+//   const settings = {
+//     centerMode: true,
+//     centerPadding: "0",
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 5,
+//     slidesToScroll: 1,
+//     // dots: true,
+//     nextArrow: <CustomNextArrow data-clickable="true" />,
+//     prevArrow: <CustomPrevArrow data-clickable="true" />,
+//     beforeChange: (current, next) => {
+//       // Disable hover effect for all cards
+//       setDisableHover(true);
+//     },
+//     afterChange: (current) => {
+//       // Enable hover effect for the center card
+//       setDisableHover(false);
+//       // Update the index of the center card
+//       setCenterCardIndex(current);
+//     },
+//   };
+
+//   const [disableHover, setDisableHover] = useState(false);
+//   const [centerCardIndex, setCenterCardIndex] = useState(0);
+
+//   return (
+//     <>
+//       <HomeContainer disableHover={disableHover}>
+//         <CarouselWrapper>
+//           <Slider {...settings}>
+//             {cardData.map((card, index) => (
+//               <CardColumn key={index}>
+//                 <StyledProfileCard
+//                   link={card.link}
+//                   icon={card.icon}
+//                   title={card.title}
+//                   active={index === centerCardIndex}
+//                 /> 
+//                 <PromptDiv>{index === centerCardIndex && (
+//                   <SpaceBeforeBelowCard>{card.spaceBeforeBelowCard}</SpaceBeforeBelowCard>
+//                 )}
+//                 {index === centerCardIndex && (
+//                   <TextBelowCard>{card.textBelowCard}</TextBelowCard>
+//                 )}</PromptDiv>
+               
+//               </CardColumn>
+//             ))}
+//           </Slider>
+//         </CarouselWrapper>
+//       </HomeContainer>
+//       {centerCardIndex === 0 && <Television />}
+//       {centerCardIndex === 1 && <Activities />}
+//       {centerCardIndex === 2 && <Entertainment />}
+
+//       {centerCardIndex === 5 && <Lights />}
+//       {centerCardIndex === 4 && <Contacts />}
+//       <CallHelpButtonComponent />
+//     </>
+//   );
+// };
+
+// export default Home;
+
+=======
+>>>>>>> Stashed changes
+// import React, { useState } from "react";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import styled from "styled-components";
+// import ProfileCard from "../components/ProfileCard/ProfileCard";
+// import { ChevronLeftIcon, ChevronRightIcon, TvIcon } from "../components/icons";
+// import CallHelpButtonComponent from "../components/CallHelpButton";
+// import Contacts from "../components/Contacts";
+// import { GiFilmSpool } from "react-icons/gi";
+// import { FaPhoneAlt } from "react-icons/fa";
+// // import { GrYoga } from "react-icons/gr";
+// import { IoSettings } from "react-icons/io5";
+// import { FaLightbulb } from "react-icons/fa";
+// import { MdOutlineSportsMartialArts } from "react-icons/md";
+// import Lights from "../components/Lights";
+// import Entertainment from "../components/Entertainment";
+// import Television from "../components/Tv";
+// import Activities from "../components/Activities";
+
+// const HomeContainer = styled.div`
+//   position: relative;
+//   top: 150px;
+//   left: 0;
+//   right: 0;
+//   display: flex;
+//   justify-content: center;
+//   min-height: 50vh;
+//   text-align: center;
+// `;
+
+// const CarouselWrapper = styled.div`
+//   margin: 0 auto;
+//   max-width: 2500px;
+//   justify-content: center;
+//   display: block;
 // `;
 
 // const CardColumn = styled.div`
@@ -744,16 +751,50 @@ export default Home;
 //   font-size: 46px;
 //   color: #2e3e5e;
 //   position: initial;
-
 //   display: flex;
 // `;
 
-// const CallHelpButtonContainer = styled.div`
-//   position: absolute;
-//   bottom: 0;
-//   right: 0;
-//   margin: 20px;
-// `;
+// const cardData = [
+//   {
+//     // link: "/garden-loft-app/entertainment",
+//     icon: <TvIcon />,
+//     title: "TV",
+//     textBelowCard: "Watch TV?",
+//     page: <Television />,
+//   },
+//   {
+//     icon: <MdOutlineSportsMartialArts size={150} />,
+//     title: "ACTIVITIES",
+//     textBelowCard: "Join an Activity?",
+//     page: <Activities />,
+//   },
+//   {
+//     // link: "/garden-loft-app/services",
+//     icon: <GiFilmSpool size={150} />,
+//     title: "ENTERTAINMENT",
+//     textBelowCard: "Watch Entertainment?",
+//     page: <Entertainment />,
+//   },
+//   {
+//     // link: "/garden-loft-app/services",
+//     icon: <IoSettings size={150} />,
+//     title: "SETTINGS",
+//     textBelowCard: "Change Settings?",
+//   },
+//   {
+//     icon: <FaPhoneAlt size={150} />,
+//     title: "VIDEO CALL",
+//     textBelowCard: "Make a Video Call?",
+//     page: <Contacts />,
+//   },
+//   {
+//     // link: "/garden-loft-app/smart-loft",
+//     icon: <FaLightbulb size={150} />,
+//     title: "LIGHTS",
+//     textBelowCard: "Change Lights?",
+//     page: <Lights />,
+//   },
+// ];
 
 // const Home = () => {
 //   const settings = {
@@ -763,57 +804,23 @@ export default Home;
 //     speed: 500,
 //     slidesToShow: 5,
 //     slidesToScroll: 1,
-//     dots: true,
-//     nextArrow: <CustomNextArrow />,
-//     prevArrow: <CustomPrevArrow />,
+//     // dots: true,
+//     nextArrow: <CustomNextArrow data-clickable="true" />,
+//     prevArrow: <CustomPrevArrow data-clickable="true" />,
 //     beforeChange: (current, next) => {
+//       // Disable hover effect for all cards
 //       setDisableHover(true);
 //     },
 //     afterChange: (current) => {
+//       // Enable hover effect for the center card
 //       setDisableHover(false);
+//       // Update the index of the center card
 //       setCenterCardIndex(current);
 //     },
 //   };
 
 //   const [disableHover, setDisableHover] = useState(false);
 //   const [centerCardIndex, setCenterCardIndex] = useState(0);
-
-//   const cardData = [
-//     {
-//       link: "/garden-loft-app/entertainment",
-//       icon: <TvIcon />,
-//       title: "TV",
-//       textBelowCard: "Watch TV?",
-//     },
-//     {
-//       icon: <ScheduleIcon />,
-//       title: "ACTIVITIES",
-//       textBelowCard: "Join an Activity?",
-//     },
-//     {
-//       link: "/garden-loft-app/services",
-//       icon: <ServicesIcon />,
-//       title: "ENTERTAINMENT",
-//       textBelowCard: "Watch Entertainment?",
-//     },
-//     {
-//       link: "/garden-loft-app/services",
-//       icon: <ServicesIcon />,
-//       title: "SETTINGS",
-//       textBelowCard: "Change Settings?",
-//     },
-//     {
-//       icon: <ContactsIcon />,
-//       title: "VIDEO CALL",
-//       textBelowCard: "Make a Video Call?",
-//     },
-//     {
-//       link: "/garden-loft-app/smart-loft",
-//       icon: <ContactsIcon />,
-//       title: "LIGHTS",
-//       textBelowCard: "Change Lights?",
-//     },
-//   ];
 
 //   return (
 //     <>
@@ -826,13 +833,8 @@ export default Home;
 //                   link={card.link}
 //                   icon={card.icon}
 //                   title={card.title}
-//                   textBelowCard={card.textBelowCard}
 //                   active={index === centerCardIndex}
-//                   disableHover={disableHover}
 //                 />
-//                 {index === centerCardIndex && card.title === "VIDEO CALL" && (
-//                   <Contacts />
-//                 )}
 //                 {index === centerCardIndex && (
 //                   <TextBelowCard>{card.textBelowCard}</TextBelowCard>
 //                 )}
@@ -840,12 +842,619 @@ export default Home;
 //             ))}
 //           </Slider>
 //         </CarouselWrapper>
-//         <CallHelpButtonContainer>
-//           <CallHelpButtonComponent />
-//         </CallHelpButtonContainer>
 //       </HomeContainer>
+//       {centerCardIndex === 0 && <Television />}
+//       {centerCardIndex === 1 && <Activities />}
+//       {centerCardIndex === 2 && <Entertainment />}
+
+//       {centerCardIndex === 5 && <Lights />}
+//       {centerCardIndex === 4 && <Contacts />}
+//       <CallHelpButtonComponent />
 //     </>
 //   );
 // };
 
 // export default Home;
+
+// import React, { useState } from "react";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import styled from "styled-components";
+// import ProfileCard from "../components/ProfileCard/ProfileCard";
+// import { ChevronLeftIcon, ChevronRightIcon, TvIcon } from "../components/icons";
+// import CallHelpButtonComponent from "../components/CallHelpButton";
+// import Contacts from "../components/Contacts";
+// import { GiFilmSpool } from "react-icons/gi";
+// import { FaPhoneAlt } from "react-icons/fa";
+// import { IoSettings } from "react-icons/io5";
+// import { FaLightbulb } from "react-icons/fa";
+// import { MdOutlineSportsMartialArts } from "react-icons/md";
+// import Lights from "../components/Lights";
+// import Entertainment from "../components/Entertainment";
+// import Television from "../components/Tv";
+// import Activities from "../components/Activities";
+
+// const HomeContainer = styled.div`
+//   position: relative;
+//   top: 150px;
+//   left: 0;
+//   right: 0;
+//   display: flex;
+//   justify-content: center;
+//   min-height: 50vh;
+//   text-align: center;
+// `;
+
+// const CarouselWrapper = styled.div`
+//   margin: 0 auto;
+//   max-width: 2500px;
+//   max-height: 800px;
+//   justify-content: center;
+//   display: block;
+
+//   transition: border 0.3s ease, opacity 0.3s ease;
+// `;
+
+// const CardColumn = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+//   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+// `;
+// const CustomArrowButton = styled.div`
+//   width: 80px;
+//   height: 80px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   cursor: pointer;
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   z-index: 1;
+
+//   &:active {
+//     transform: translateY(-50%), scale(0.95);
+//   }
+// `;
+
+// const StyledProfileCard = styled(ProfileCard)`
+//   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+//   display: flex;
+//   color: black;
+
+//   &:hover {
+//     transform: scale(1.1);
+//     .icon-container {
+//       svg {
+//         fill: black;
+//       }
+//     }
+//   }
+
+//   &.slick-center {
+//     transform: scale(1.5);
+//     background: yellow;
+//     .icon-container {
+//       svg {
+//         fill: #000; /* Change the icon color for the center card */
+//       }
+//     }
+//   }
+// `;
+
+// const CustomNextArrow = ({ onClick }) => (
+//   <CustomArrowButton onClick={onClick} style={{ right: -100 }}>
+//     <ChevronRightIcon />
+//   </CustomArrowButton>
+// );
+
+// const CustomPrevArrow = ({ onClick }) => (
+//   <CustomArrowButton onClick={onClick} style={{ left: -100 }}>
+//     <ChevronLeftIcon />
+//   </CustomArrowButton>
+// );
+
+// const TextBelowCard = styled.h1`
+//   margin: 10px;
+//   font-size: 46px;
+//   color: #2e3e5e;
+//   position: initial;
+//   display: flex;
+// `;
+
+// const cardData = [
+//   {
+//     // link: "/garden-loft-app/entertainment",
+//     icon: <TvIcon />,
+//     title: "TV",
+//     textBelowCard: "Watch TV?",
+//     page: <Television />,
+//   },
+//   {
+//     icon: <MdOutlineSportsMartialArts size={150} />,
+//     title: "ACTIVITIES",
+//     textBelowCard: "Join an Activity?",
+//     page: <Activities />,
+//   },
+//   {
+//     // link: "/garden-loft-app/services",
+//     icon: <GiFilmSpool size={150} />,
+//     title: "ENTERTAINMENT",
+//     textBelowCard: "Watch Entertainment?",
+//     page: <Entertainment />,
+//   },
+//   {
+//     // link: "/garden-loft-app/services",
+//     icon: <IoSettings size={150} />,
+//     title: "SETTINGS",
+//     textBelowCard: "Change Settings?",
+//   },
+//   {
+//     icon: <FaPhoneAlt size={150} />,
+//     title: "VIDEO CALL",
+//     textBelowCard: "Make a Video Call?",
+//     page: <Contacts />,
+//   },
+//   {
+//     // link: "/garden-loft-app/smart-loft",
+//     icon: <FaLightbulb size={150} />,
+//     title: "LIGHTS",
+//     textBelowCard: "Change Lights?",
+//     page: <Lights />,
+//   },
+// ];
+
+// const CarouselDivBox = styled.div`
+//   display: block;
+//   justify-content: center;
+//   border: ${(props) => (props.active ? "5px solid yellow" : "none")};
+//   opacity: ${(props) => (props.active ? 1 : 0.5)};
+// `;
+
+// const Home = () => {
+//   const settings = {
+//     centerMode: true,
+//     centerPadding: "0",
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 5,
+//     slidesToScroll: 1,
+//     // dots: true,
+//     nextArrow: <CustomNextArrow data-clickable="true" />,
+//     prevArrow: <CustomPrevArrow data-clickable="true" />,
+//     beforeChange: (current, next) => {
+//       // Disable hover effect for all cards
+//       setDisableHover(true);
+//     },
+//     afterChange: (current) => {
+//       // Enable hover effect for the center card
+//       setDisableHover(false);
+//       // Update the index of the center card
+//       setCenterCardIndex(current);
+//     },
+//   };
+
+//   const [disableHover, setDisableHover] = useState(false);
+//   const [centerCardIndex, setCenterCardIndex] = useState(0);
+//   const [activeCarousel, setActiveCarousel] = useState("cardData");
+
+//   const handleCarouselChange = (current) => {
+//     setDisableHover(true);
+//     setActiveCarousel(current);
+//   };
+
+//   return (
+//     <>
+//       <HomeContainer disableHover={disableHover}>
+//         <CarouselWrapper>
+//           <CarouselDivBox active={activeCarousel === "cardData"}>
+//             <Slider
+//               {...settings}
+//               beforeChange={() => handleCarouselChange("cardData")}>
+//               {cardData.map((card, index) => (
+//                 <CardColumn key={index}>
+//                   <StyledProfileCard
+//                     link={card.link}
+//                     icon={card.icon}
+//                     title={card.title}
+//                     active={index === centerCardIndex}
+//                   />
+//                   {index === centerCardIndex && (
+//                     <TextBelowCard>{card.textBelowCard}</TextBelowCard>
+//                   )}
+//                 </CardColumn>
+//               ))}
+//             </Slider>
+//           </CarouselDivBox>
+//         </CarouselWrapper>
+//       </HomeContainer>
+//       {centerCardIndex === 0 && <Television />}
+//       {centerCardIndex === 1 && <Activities />}
+//       {centerCardIndex === 2 && <Entertainment />}
+
+//       {centerCardIndex === 5 && <Lights />}
+//       {centerCardIndex === 4 && <Contacts />}
+//       <CallHelpButtonComponent />
+//     </>
+//   );
+// };
+
+// export default Home;
+import React, { useState, useEffect, useRef } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import styled from "styled-components";
+import ProfileCard from "../components/ProfileCard/ProfileCard";
+import { ChevronLeftIcon, ChevronRightIcon, TvIcon } from "../components/icons";
+import CallHelpButtonComponent from "../components/CallHelpButton";
+import Contacts from "../components/Contacts";
+import { GiFilmSpool } from "react-icons/gi";
+import { FaPhoneAlt } from "react-icons/fa";
+import { IoSettings } from "react-icons/io5";
+import { GrGallery } from "react-icons/gr";
+import { GrYoga } from "react-icons/gr";
+import { FaLightbulb } from "react-icons/fa";
+// import { MdOutlineSportsMartialArts } from "react-icons/md";
+import Lights from "../components/Lights";
+import Entertainment from "../components/Entertainment";
+import Television from "../components/Tv";
+import Activities from "../components/Activities";
+
+const HomeContainer = styled.div`
+  position: relative;
+  top: 150px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+`;
+
+const CarouselWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 2500px;
+  max-height: 800px;
+  justify-content: center;
+  display: block;
+
+  /* Add styles for border and opacity */
+  border: ${(props) => (props.active ? "8px solid yellow" : "none")};
+  opacity: ${(props) => (props.active ? 1 : 0.5)};
+  transition: border 0.3s ease, opacity 0.3s ease;
+`;
+
+const CardColumn = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+`;
+
+const CustomArrowButton = styled.div`
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  &:active {
+    transform: translateY(-50%), scale(0.95);
+  }
+`;
+
+const StyledProfileCard = styled(ProfileCard)`
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  display: flex;
+  color: black;
+
+  &:hover {
+    transform: scale(1.1);
+    .icon-container {
+      svg {
+        fill: black;
+      }
+    }
+  }
+
+  &.slick-center {
+    transform: scale(1.5);
+    background: yellow;
+    .icon-container {
+      svg {
+        fill: #000; /* Change the icon color for the center card */
+      }
+    }
+  }
+
+  /* Add new styles for opacity and border */
+  &.active-card {
+    opacity: 1;
+    border: 5px solid yellow;
+  }
+
+  &.inactive-card {
+    opacity: 0.5;
+  }
+`;
+
+const CustomNextArrow = ({ onClick }) => (
+  <CustomArrowButton onClick={onClick} style={{ right: -100 }}>
+    <ChevronRightIcon />
+  </CustomArrowButton>
+);
+
+const CustomPrevArrow = ({ onClick }) => (
+  <CustomArrowButton onClick={onClick} style={{ left: -100 }}>
+    <ChevronLeftIcon />
+  </CustomArrowButton>
+);
+
+const TextBelowCard = styled.h1`
+  margin: 0;
+  font-size: 46px;
+  color: #2e3e5e;
+  position: relative;
+  left: 0%;
+  top: 95%;
+  display: flex;
+`;
+const SpaceBeforeBelowCard = styled.h1`
+  margin: 0;
+  font-size: 46px;
+  color: #fcf8e3;
+  position: relative;
+  left: 0%;
+  top: 95%;
+  display: flex;
+`;
+const PromptDiv = styled.h1`
+  display: flex;
+`;
+const cardData = [
+  {
+    icon: <TvIcon />,
+    title: "TV",
+    spaceBeforeBelowCard: ".. ..",
+    textBelowCard: "Watch TV?",
+    page: <Television />,
+  },
+  {
+    icon: <GrYoga size={150} color={isIconActive ? "black" : "yellow"} />,
+    title: "ACTIVITIES",
+    textBelowCard: "Join an Activity?",
+    page: <Activities />,
+  },
+  {
+    icon: <GiFilmSpool size={150} />,
+    title: "ENTERTAINMENT",
+    textBelowCard: "Watch Entertainment?",
+    page: <Entertainment />,
+  },
+  {
+    icon: <IoSettings size={150} />,
+    title: "SETTINGS",
+    textBelowCard: "Change Settings?",
+  },
+  {
+    icon: <FaPhoneAlt size={150} />,
+    title: "VIDEO CALL",
+    textBelowCard: "Make a Video Call?",
+    page: <Contacts />,
+  },
+  {
+    icon: <FaLightbulb size={150} />,
+    title: "LIGHTS",
+    textBelowCard: "Change Lights?",
+    page: <Lights />,
+  },
+];
+
+const CarouselDivBox = styled.div`
+  display: block;
+  justify-content: center;
+
+  border: ${(props) => (props.active ? "5px solid yellow" : "none")};
+  opacity: ${(props) => (props.active ? 1 : 0.5)};
+  transition: border 0.3s ease, opacity 0.3s ease;
+`;
+
+const Home = () => {
+  const sliderRef = useRef(null);
+  const activitiesRef = useRef(null);
+  const tvRef = useRef(null);
+  const entertainmentRef = useRef(null);
+  const contactsRef = useRef(null);
+  const lightsRef = useRef(null);
+
+  const settings = {
+    centerMode: true,
+    centerPadding: "0",
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    nextArrow: <CustomNextArrow data-clickable="true" />,
+    prevArrow: <CustomPrevArrow data-clickable="true" />,
+    beforeChange: (current, next) => {
+      // Disable hover effect for all cards
+      setDisableHover(true);
+    },
+    afterChange: (current) => {
+      // Enable hover effect for the center card
+      setDisableHover(false);
+      // Update the index of the center card
+      setCenterCardIndex(current);
+    },
+  };
+
+  const [disableHover, setDisableHover] = useState(false);
+  const [centerCardIndex, setCenterCardIndex] = useState(0);
+  const [activeCarousel, setActiveCarousel] = useState("cardData");
+
+  const handleCarouselChange = (current) => {
+    setDisableHover(true);
+    setActiveCarousel(current);
+  };
+  const handleKeyDown = (event) => {
+    switch (event.key) {
+      case "ArrowLeft":
+        if (activeCarousel === "cardData") {
+          sliderRef.current.slickPrev();
+        } else if (activeCarousel === "componentData") {
+          // Handle left arrow key for the component carousel
+          switch (centerCardIndex) {
+            case 0:
+              tvRef.current.prevTv();
+              break;
+            case 1:
+              activitiesRef.current.prevContact();
+              break;
+            case 2:
+              entertainmentRef.current.prevContact();
+              break;
+            case 3:
+              // Handle left arrow key for the Lights component
+              lightsRef.current.prevContact();
+              break;
+            // ... add more cases for other components if needed
+            default:
+              break;
+          }
+        }
+        break;
+      case "ArrowRight":
+        if (activeCarousel === "cardData") {
+          sliderRef.current.slickNext();
+        } else if (activeCarousel === "componentData") {
+          // Handle right arrow key for the component carousel
+          switch (centerCardIndex) {
+            case 0:
+              tvRef.current.nextTv();
+              break;
+            case 1:
+              activitiesRef.current.nextContact();
+              break;
+            case 2:
+              entertainmentRef.current.nextContact();
+              break;
+            case 3:
+              // Handle right arrow key for the Lights component
+              lightsRef.current.nextContact();
+              break;
+            // ... add more cases for other components if needed
+            default:
+              break;
+          }
+        }
+        break;
+      case "ArrowDown":
+        // Handle down arrow key
+        if (activeCarousel === "cardData") {
+          console.log("Navigate down to component carousel");
+          setActiveCarousel("componentData");
+        }
+        break;
+      case "ArrowUp":
+        // Handle up arrow key
+        if (activeCarousel === "componentData") {
+          console.log("Navigate up to card carousel");
+          setActiveCarousel("cardData");
+        }
+        break;
+      case "Enter":
+        // Handle Enter key
+        if (activeCarousel === "cardData") {
+          // Perform action for card carousel
+        } else if (activeCarousel === "componentData") {
+          // Perform action for component carousel
+          switch (centerCardIndex) {
+            case 1:
+              activitiesRef.current.openModal();
+              break;
+            // ... add more cases for other components if needed
+            default:
+              break;
+          }
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener for keyboard navigation
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown, centerCardIndex, activeCarousel]);
+
+  return (
+    <>
+      <HomeContainer disableHover={disableHover}>
+        {/* Card Carousel */}
+        <CarouselWrapper active={activeCarousel === "cardData"}>
+          <CarouselDivBox active={activeCarousel === "cardData"}>
+            <Slider
+              {...settings}
+              ref={sliderRef}
+              beforeChange={() => handleCarouselChange("cardData")}>
+              {cardData.map((card, index) => (
+                <CardColumn key={index}>
+                  <StyledProfileCard
+                    link={card.link}
+                    icon={card.icon}
+                    title={card.title}
+                    active={index === centerCardIndex}
+                    className={
+                      activeCarousel === "cardData"
+                        ? "active-card"
+                        : "inactive-card"
+                    }
+                  />
+                  <PromptDiv>
+                    {index === centerCardIndex && (
+                      <SpaceBeforeBelowCard>
+                        {card.spaceBeforeBelowCard}
+                      </SpaceBeforeBelowCard>
+                    )}
+                    {index === centerCardIndex && (
+                      <TextBelowCard>{card.textBelowCard}</TextBelowCard>
+                    )}
+                  </PromptDiv>
+                </CardColumn>
+              ))}
+            </Slider>
+          </CarouselDivBox>
+        </CarouselWrapper>
+      </HomeContainer>
+      {/* Component Carousel */}
+      <CarouselWrapper active={activeCarousel === "componentData"}>
+        {centerCardIndex === 0 && <Television ref={tvRef} />}
+        {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
+        {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}
+        {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
+        {centerCardIndex === 5 && <Lights ref={lightsRef} />}
+        {/* ... add more components if needed */}
+      </CarouselWrapper>
+
+      <CallHelpButtonComponent />
+    </>
+  );
+};
+
+export default Home;

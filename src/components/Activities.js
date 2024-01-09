@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
-import { GiTeacher } from "react-icons/gi";
-import { GrYoga } from "react-icons/gr";
-import { GiRollingDices } from "react-icons/gi";
-
-import "./activities.css";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
-import "./activities.css";
 import {
   IoIosArrowBack,
   IoIosArrowForward,
   IoIosArrowUp,
-  IoIosArrowDown
+  IoIosArrowDown,
 } from "react-icons/io";
+import { GrYoga } from "react-icons/gr";
+import { GiTeacher, GiRollingDices } from "react-icons/gi";
+
+import "./activities.css";
 
 const contactList = [
   {
@@ -60,9 +58,6 @@ const contactList = [
   },
 ];
 
-//Create a useState for cycling names through the prompt div on the bottom
-
-// Custom hook for handling the modal
 const useContactModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
@@ -84,65 +79,36 @@ const useContactModal = () => {
   };
 };
 
-function Activities() {
-  // handle Help Button
-  // const handleHelpClick = () => {
-  //   const phoneNumber = "+1234556778";
-  //   const userChoice = window.confirm("Do you want to call or send an SMS?");
-
-  //   if (userChoice) {
-  //     window.location.href = `tel:${phoneNumber}`;
-  //   } else {
-  //     window.location.href = `sms:${phoneNumber}`;
-  //   }
-  //   const telUrl = `tel:${phoneNumber}`;
-  //   window.location.href = telUrl;
-  // };
-
+const Activities = () => {
   const { modalIsOpen, selectedContact, openModal, closeModal } =
     useContactModal();
   const [cardIndex, setCardIndex] = useState(0);
-  //call using window
+
   const contactCall = () => {
     if (selectedContact) {
       const phoneNumber = "+1234556778";
       window.location.href = `tel:${phoneNumber}`;
-      closeModal(); // Close the modal after initiating the call
+      closeModal();
     }
   };
-  //   const userChoice = window.confirm('Do you want to call or send an SMS?');
 
-  // if (userChoice) {
-  //   window.location.href = `tel:${phoneNumber}`;
-  // } else {
-  //   window.location.href = `sms:${phoneNumber}`;
-  // }
-  //   const telUrl = `tel:${phoneNumber}`;
-  //   window.location.href = telUrl;
-  // };
-
-  // Arrow Functions
-  const NextArrow = ({ onClick }) => {
-    return (
-      <div className="arrow next" onClick={onClick}>
-        <div onClick={() => nextContact()}>
-          {" "}
-          <IoIosArrowForward size={170} />
-        </div>
+  const NextArrow = ({ onClick }) => (
+    <div className="arrow next" onClick={onClick}>
+      <div onClick={() => nextContact()}>
+        {" "}
+        <IoIosArrowForward size={170} />
       </div>
-    );
-  };
+    </div>
+  );
 
-  const PrevArrow = ({ onClick }) => {
-    return (
-      <div className="arrow prev" onClick={onClick}>
-        <div onClick={() => prevContact()}>
-          <IoIosArrowBack size={170} />
-        </div>
+  const PrevArrow = ({ onClick }) => (
+    <div className="arrow prev" onClick={onClick}>
+      <div onClick={() => prevContact()}>
+        <IoIosArrowBack size={170} />
       </div>
-    );
-  };
-  //slides effect
+    </div>
+  );
+
   const slidesSettings = {
     infinite: true,
     lazyLoad: true,
@@ -155,19 +121,43 @@ function Activities() {
     beforeChange: (current, next) => setCardIndex(next),
   };
 
-  // Use State to set prompt name under contact cards
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Function to handle cycling through the array
   const nextContact = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % contactList.length);
   };
-  // Function to handle cycling through the array
+
   const prevContact = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + contactList.length) % contactList.length
     );
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      switch (event.key) {
+        case "ArrowLeft":
+          prevContact();
+          break;
+        case "ArrowRight":
+          nextContact();
+          break;
+        case "Enter":
+          openModal(contactList[currentIndex]);
+          break;
+        default:
+          break;
+      }
+    };
+
+    // Add event listener for keyboard navigation
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [cardIndex, modalIsOpen, currentIndex, openModal]);
 
   return (
     <>
@@ -200,7 +190,6 @@ function Activities() {
         </div>
       </div>
 
-      {/* Pop Up Window to verify call */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -216,6 +205,6 @@ function Activities() {
       </Modal>
     </>
   );
-}
+};
 
 export default Activities;
