@@ -183,7 +183,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontSize={"48px"}
           fontWeight="500"
           color="#2D3E5F">
-          Call 911 for medical emergency assistance
+          Call for medical emergency assistance
         </Typography>
         <StyledButtonAlignment style={{ paddingLeft: "60px" }}>
           <ModalButton onClick={handleConfirm}>Yes, I need help</ModalButton>
@@ -243,7 +243,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontWeight="500"
           mb={1}
           color="#2D3E5F">
-          Help is on the way
+          Help is on the way,
         </Typography>
         <Typography
           style={{ paddingLeft: "60px" }}
@@ -251,7 +251,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontWeight="500"
           mb={6}
           color="#2D3E5F">
-          and your family has been notified.
+          your family has been notified.
         </Typography>
         <StyledButtonAlignment style={{ paddingLeft: "60px" }}>
           <ModalButton
@@ -309,7 +309,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontSize={"48px"}
           fontWeight="550"
           color="#2D3E5F">
-          Your request to call 911 is cancelled.
+          Your request to call is cancelled.
         </Typography>
         <StyledButtonAlignment style={{ paddingLeft: "60px" }}>
           <ModalButton
