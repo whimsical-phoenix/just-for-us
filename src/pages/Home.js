@@ -517,7 +517,7 @@
 //   left: 0%;
 //   top: 95%;
 //   display: flex;
-  
+
 // `;
 // const SpaceBeforeBelowCard = styled.h1`
 //   margin:0;
@@ -527,12 +527,12 @@
 //   left: 0%;
 //   top: 95%;
 //   display: flex;
-  
+
 // `;
 // const PromptDiv = styled.h1`
- 
+
 //   display: flex;
-  
+
 // `;
 
 // const isIconActive = true;
@@ -618,14 +618,14 @@
 //                   icon={card.icon}
 //                   title={card.title}
 //                   active={index === centerCardIndex}
-//                 /> 
+//                 />
 //                 <PromptDiv>{index === centerCardIndex && (
 //                   <SpaceBeforeBelowCard>{card.spaceBeforeBelowCard}</SpaceBeforeBelowCard>
 //                 )}
 //                 {index === centerCardIndex && (
 //                   <TextBelowCard>{card.textBelowCard}</TextBelowCard>
 //                 )}</PromptDiv>
-               
+
 //               </CardColumn>
 //             ))}
 //           </Slider>
@@ -644,8 +644,6 @@
 
 // export default Home;
 
-=======
->>>>>>> Stashed changes
 // import React, { useState } from "react";
 // import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
@@ -1094,7 +1092,7 @@ import CallHelpButtonComponent from "../components/CallHelpButton";
 import Contacts from "../components/Contacts";
 import { GiFilmSpool } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
-import { IoSettings } from "react-icons/io5";
+
 import { GrGallery } from "react-icons/gr";
 import { GrYoga } from "react-icons/gr";
 import { FaLightbulb } from "react-icons/fa";
@@ -1125,6 +1123,7 @@ const CarouselWrapper = styled.div`
   /* Add styles for border and opacity */
   border: ${(props) => (props.active ? "8px solid yellow" : "none")};
   opacity: ${(props) => (props.active ? 1 : 0.5)};
+  border-radius: 85px;
   transition: border 0.3s ease, opacity 0.3s ease;
 `;
 
@@ -1230,7 +1229,7 @@ const cardData = [
     page: <Television />,
   },
   {
-    icon: <GrYoga size={150} color={isIconActive ? "black" : "yellow"} />,
+    icon: <GrYoga size={150} />,
     title: "ACTIVITIES",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
@@ -1242,9 +1241,9 @@ const cardData = [
     page: <Entertainment />,
   },
   {
-    icon: <IoSettings size={150} />,
-    title: "SETTINGS",
-    textBelowCard: "Change Settings?",
+    icon: <GrGallery size={150} />,
+    title: "GALLERY",
+    textBelowCard: "View Gallery?",
   },
   {
     icon: <FaPhoneAlt size={150} />,
@@ -1264,9 +1263,10 @@ const CarouselDivBox = styled.div`
   display: block;
   justify-content: center;
 
-  border: ${(props) => (props.active ? "5px solid yellow" : "none")};
-  opacity: ${(props) => (props.active ? 1 : 0.5)};
-  transition: border 0.3s ease, opacity 0.3s ease;
+  // border: ${(props) => (props.active ? "5px solid yellow" : "none")};
+  // opacity: ${(props) => (props.active ? 1 : 0.5)};
+  // border-radius: 10px;
+  // transition: border 0.3s ease, opacity 0.3s ease;
 `;
 
 const Home = () => {
@@ -1306,102 +1306,124 @@ const Home = () => {
     setDisableHover(true);
     setActiveCarousel(current);
   };
-  const handleKeyDown = (event) => {
-    switch (event.key) {
-      case "ArrowLeft":
-        if (activeCarousel === "cardData") {
-          sliderRef.current.slickPrev();
-        } else if (activeCarousel === "componentData") {
-          // Handle left arrow key for the component carousel
-          switch (centerCardIndex) {
-            case 0:
-              tvRef.current.prevTv();
-              break;
-            case 1:
-              activitiesRef.current.prevContact();
-              break;
-            case 2:
-              entertainmentRef.current.prevContact();
-              break;
-            case 3:
-              // Handle left arrow key for the Lights component
-              lightsRef.current.prevContact();
-              break;
-            // ... add more cases for other components if needed
-            default:
-              break;
-          }
-        }
-        break;
-      case "ArrowRight":
-        if (activeCarousel === "cardData") {
-          sliderRef.current.slickNext();
-        } else if (activeCarousel === "componentData") {
-          // Handle right arrow key for the component carousel
-          switch (centerCardIndex) {
-            case 0:
-              tvRef.current.nextTv();
-              break;
-            case 1:
-              activitiesRef.current.nextContact();
-              break;
-            case 2:
-              entertainmentRef.current.nextContact();
-              break;
-            case 3:
-              // Handle right arrow key for the Lights component
-              lightsRef.current.nextContact();
-              break;
-            // ... add more cases for other components if needed
-            default:
-              break;
-          }
-        }
-        break;
-      case "ArrowDown":
-        // Handle down arrow key
-        if (activeCarousel === "cardData") {
-          console.log("Navigate down to component carousel");
-          setActiveCarousel("componentData");
-        }
-        break;
-      case "ArrowUp":
-        // Handle up arrow key
-        if (activeCarousel === "componentData") {
-          console.log("Navigate up to card carousel");
-          setActiveCarousel("cardData");
-        }
-        break;
-      case "Enter":
-        // Handle Enter key
-        if (activeCarousel === "cardData") {
-          // Perform action for card carousel
-        } else if (activeCarousel === "componentData") {
-          // Perform action for component carousel
-          switch (centerCardIndex) {
-            case 1:
-              activitiesRef.current.openModal();
-              break;
-            // ... add more cases for other components if needed
-            default:
-              break;
-          }
-        }
-        break;
-      default:
-        break;
-    }
-  };
 
   useEffect(() => {
-    // Add event listener for keyboard navigation
+    const handleKeyDown = (event) => {
+      switch (event.key) {
+        case "ArrowLeft":
+          if (activeCarousel === "cardData") {
+            sliderRef.current.slickPrev();
+          } else if (activeCarousel === "componentData") {
+            // Handle left arrow key for the component carousel
+            switch (centerCardIndex) {
+              case 0:
+                tvRef.current.prevTv();
+                break;
+              case 1:
+                activitiesRef.current.prevContact();
+                break;
+              case 2:
+                if (entertainmentRef.current) {
+                  entertainmentRef.current.prevContact();
+                }
+                break;
+              case 3:
+                if (lightsRef.current) {
+                  lightsRef.current.prevContact();
+                }
+                break;
+              // ... (add more cases for other components if needed)
+              default:
+                break;
+            }
+          }
+          break;
+
+        case "ArrowRight":
+          if (activeCarousel === "cardData") {
+            sliderRef.current.slickNext();
+          } else if (activeCarousel === "componentData") {
+            // Handle right arrow key for the component carousel
+            switch (centerCardIndex) {
+              case 0:
+                tvRef.current.nextTv();
+                break;
+              case 1:
+                activitiesRef.current.nextContact();
+                break;
+              case 2:
+                if (
+                  entertainmentRef.current &&
+                  typeof entertainmentRef.current.nextContact === "function"
+                ) {
+                  entertainmentRef.current.nextContact();
+                } else {
+                  console.error(
+                    "nextContact function is not available on entertainmentRef.current"
+                  );
+                }
+                break;
+              case 3:
+                // Handle right arrow key for the Lights component
+                if (
+                  lightsRef.current &&
+                  typeof lightsRef.current.nextContact === "function"
+                ) {
+                  lightsRef.current.nextContact();
+                } else {
+                  console.error(
+                    "nextContact function is not available on lightsRef.current"
+                  );
+                }
+                break;
+              // ... add more cases for other components if needed
+              default:
+                break;
+            }
+          }
+          break;
+
+        case "ArrowDown":
+          // Handle down arrow key
+          if (activeCarousel === "cardData") {
+            console.log("Navigate down to component carousel");
+            setActiveCarousel("componentData");
+          }
+          break;
+        case "ArrowUp":
+          // Handle up arrow key
+          if (activeCarousel === "componentData") {
+            console.log("Navigate up to card carousel");
+            setActiveCarousel("cardData");
+          }
+          break;
+        case "Enter":
+          // Handle Enter key
+          if (activeCarousel === "cardData") {
+            // Perform action for card carousel
+          } else if (activeCarousel === "componentData") {
+            // Perform action for component carousel
+            switch (centerCardIndex) {
+              case 1:
+                activitiesRef.current.openModal();
+                break;
+              // ... add more cases for other components if needed
+              default:
+                break;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    };
+
     window.addEventListener("keydown", handleKeyDown);
 
-    // Remove event listener when component unmounts
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [handleKeyDown, centerCardIndex, activeCarousel]);
+  }, [centerCardIndex, activeCarousel, setDisableHover]);
 
   return (
     <>
@@ -1446,12 +1468,13 @@ const Home = () => {
       <CarouselWrapper active={activeCarousel === "componentData"}>
         {centerCardIndex === 0 && <Television ref={tvRef} />}
         {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
-        {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}
+        {centerCardIndex === 2 && (
+          <Entertainment ref={(ref) => (entertainmentRef.current = ref)} />
+        )}
         {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
         {centerCardIndex === 5 && <Lights ref={lightsRef} />}
         {/* ... add more components if needed */}
       </CarouselWrapper>
-
       <CallHelpButtonComponent />
     </>
   );
