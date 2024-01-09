@@ -155,7 +155,7 @@ function Television() {
   };
   return (
     <div>
-      <Link to="/" className="linkStyle">
+      <Link to="/" className="linkStyle tvLink">
         <div className="up-arrow">
           <IoIosArrowUp size={90} className="arrow-up" />
         </div>
