@@ -14,8 +14,8 @@
 }
 
 .profile-card {
-  width: 300px;
-  height: 336px;
+  width: 400px;
+  height: 456px;
   background: gray;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,7 @@
   display: flex;
   font-weight: bold;
   color: #2d3e5f;
-  font-size: 60px;
+  font-size: 55px;
   /* display: flex; */
 }
 
@@ -42,7 +42,7 @@
   align-items: center; /* Center the icon vertically */
   justify-content: center; /* Center the icon horizontally */
 }
-.icon-container h3{
+.icon-container h3 {
   font-size: 150px;
 }
 

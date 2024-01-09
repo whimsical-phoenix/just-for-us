@@ -208,15 +208,16 @@ const ProfileCardLink = styled(Link)`
 `;
 
 const ProfileCardContainer = styled.div`
-  width: ${(props) => (props.active ? "270px" : "230px")};
+  width: ${(props) => (props.active ? "270px" : "250px")};
   height: ${(props) => (props.active ? "290px" : "250px")};
   background: ${(props) =>
     props.active ? "#f3b717" : props.backgroundColor || "#7F8181"};
   border-radius: ${(props) =>
-    props.active ? "35%" : props.borderRadius || "38px"};
+    props.active ? "30%" : props.borderRadius || "38px"};
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   margin: 50px;
   padding: 20px;
+
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -230,7 +231,7 @@ const ProfileCardContainer = styled.div`
 
     h3 {
       color: #2f302e;
-      font-size:35px;
+      font-size: 30px;
     }
 
     .icon-container svg {
@@ -289,10 +290,10 @@ const CardContent = styled.div`
 
   h3 {
     margin: 15px;
-    margin-left: 3px;
+    margin-left: 10px;
     padding-left: 5px;
     color: #f3b717;
-    font-size: 35px;
+    font-size: 30px;
   }
 `;
 
@@ -303,6 +304,9 @@ const TextBelowCard = styled.h1`
   transform: translate(-50%, -50%);
   color: black;
   display: ${(props) => (props.active ? "block" : "none")};
+`;
+const ProfileCardDisplay = styled.div`
+  display: unset;
 `;
 
 const ProfileCard = ({
@@ -324,21 +328,23 @@ const ProfileCard = ({
   };
 
   return (
-    <ProfileCardLink to={link}>
-      <ProfileCardContainer
-        className={`profile-card-div ${active ? "slick-center" : ""}`}
-        backgroundColor={backgroundColor}
-        borderRadius={borderRadius}
-        disableHover={disableHover}
-        onClick={handleCardClick}
-        active={active}>
-        <CardContent>
-          <div className="icon-container">{icon}</div>
-          <h3>{title}</h3>
-        </CardContent>
-        <TextBelowCard active={active}>{textBelowCard}</TextBelowCard>
-      </ProfileCardContainer>
-    </ProfileCardLink>
+    <ProfileCardDisplay>
+      <ProfileCardLink to={link}>
+        <ProfileCardContainer
+          className={`profile-card-div ${active ? "slick-center" : ""}`}
+          backgroundColor={backgroundColor}
+          borderRadius={borderRadius}
+          disableHover={disableHover}
+          onClick={handleCardClick}
+          active={active}>
+          <CardContent>
+            <div className="icon-container">{icon}</div>
+            <h3>{title}</h3>
+          </CardContent>
+          <TextBelowCard active={active}>{textBelowCard}</TextBelowCard>
+        </ProfileCardContainer>
+      </ProfileCardLink>
+    </ProfileCardDisplay>
   );
 };
 
