@@ -119,10 +119,10 @@ const Lights = () => {
       tabIndex="0">
       <Link to="/" className="linkStyle">
         <div className="up-arrow">
-          <IoIosArrowUp size={100} className="arrow-up" />
+          <IoIosArrowUp size={90} className="arrow-up" />
         </div>
         <div className="down-arrow">
-          <IoIosArrowDown size={100} className="arrow-down" />
+          <IoIosArrowDown size={90} className="arrow-down" />
         </div>
       </Link>
       <div className="slider-call-1">
