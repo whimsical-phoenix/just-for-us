@@ -1093,8 +1093,8 @@ import Contacts from "../components/Contacts";
 import { GiFilmSpool } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
 
-import { GrGallery } from "react-icons/gr";
-import { GrYoga } from "react-icons/gr";
+import { IoMdPhotos } from "react-icons/io";
+import { GiWeightLiftingUp } from "react-icons/gi";
 import { FaLightbulb } from "react-icons/fa";
 // import { MdOutlineSportsMartialArts } from "react-icons/md";
 import Lights from "../components/Lights";
@@ -1156,6 +1156,7 @@ const StyledProfileCard = styled(ProfileCard)`
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
   display: flex;
   color: black;
+  font-size: 25px;
 
   &:hover {
     transform: scale(1.1);
@@ -1229,7 +1230,7 @@ const cardData = [
     page: <Television />,
   },
   {
-    icon: <GrYoga size={150} />,
+    icon: <GiWeightLiftingUp size={150} />,
     title: "ACTIVITIES",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
@@ -1241,7 +1242,7 @@ const cardData = [
     page: <Entertainment />,
   },
   {
-    icon: <GrGallery size={150} />,
+    icon: <IoMdPhotos size={150} />,
     title: "GALLERY",
     textBelowCard: "View Gallery?",
   },
