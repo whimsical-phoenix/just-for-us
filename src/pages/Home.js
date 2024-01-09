@@ -1093,8 +1093,10 @@ import Contacts from "../components/Contacts";
 import { GiFilmSpool } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
 
+
 import { IoMdPhotos } from "react-icons/io";
 import { GiWeightLiftingUp } from "react-icons/gi";
+
 import { FaLightbulb } from "react-icons/fa";
 // import { MdOutlineSportsMartialArts } from "react-icons/md";
 import Lights from "../components/Lights";
@@ -1115,7 +1117,9 @@ const HomeContainer = styled.div`
 
 const CarouselWrapper = styled.div`
   margin: 0 auto;
-  max-width: 2400px;
+
+  max-width: 2500px;
+
   max-height: 800px;
   justify-content: center;
   display: block;
@@ -1230,7 +1234,9 @@ const cardData = [
     page: <Television />,
   },
   {
+
     icon: <GiWeightLiftingUp size={150} />,
+
     title: "ACTIVITIES",
     spaceBeforeBelowCard: "..",
     textBelowCard: "Join an Activity?",
@@ -1243,9 +1249,11 @@ const cardData = [
     page: <Entertainment />,
   },
   {
+
     icon: <IoMdPhotos size={150} />,
     title: "GALLERY",
     spaceBeforeBelowCard: ".....",
+
     textBelowCard: "View Gallery?",
   },
   {
