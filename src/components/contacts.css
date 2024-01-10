@@ -70,7 +70,7 @@
   flex-direction: column;
   transform: scale(0.7);
   transition: transform 300ms;
-  opacity: 0.5;
+  opacity: 1;
   gap: 0.8rem;
   height: 27rem;
   padding: 4rem 3rem;

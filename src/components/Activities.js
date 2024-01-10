@@ -2,16 +2,30 @@ import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
-import {
-  IoIosArrowBack,
-  IoIosArrowForward,
-  IoIosArrowUp,
-  IoIosArrowDown,
-} from "react-icons/io";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { GrYoga } from "react-icons/gr";
 import { GiTeacher, GiRollingDices } from "react-icons/gi";
+import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
+import styled from "styled-components";
 
 import "./activities.css";
+
+const CustomArrowButton = styled.div`
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  &:active {
+    transform: translateY(-50%), scale(0.95);
+  }
+`;
 
 const contactList = [
   {
@@ -91,22 +105,16 @@ const Activities = () => {
       closeModal();
     }
   };
-
-  const NextArrow = ({ onClick }) => (
-    <div className="arrow next" onClick={onClick}>
-      <div onClick={() => nextContact()}>
-        {" "}
-        <IoIosArrowForward size={170} />
-      </div>
-    </div>
+  const CustomNextArrow = ({ onClick }) => (
+    <CustomArrowButton onClick={onClick} style={{ right: -100 }}>
+      <ChevronRightIcon />
+    </CustomArrowButton>
   );
 
-  const PrevArrow = ({ onClick }) => (
-    <div className="arrow prev" onClick={onClick}>
-      <div onClick={() => prevContact()}>
-        <IoIosArrowBack size={170} />
-      </div>
-    </div>
+  const CustomPrevArrow = ({ onClick }) => (
+    <CustomArrowButton onClick={onClick} style={{ left: -100 }}>
+      <ChevronLeftIcon />
+    </CustomArrowButton>
   );
 
   const slidesSettings = {
@@ -116,8 +124,8 @@ const Activities = () => {
     slidesToShow: 3,
     centerMode: true,
     centerPadding: 0,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
     beforeChange: (current, next) => setCardIndex(next),
   };
 
