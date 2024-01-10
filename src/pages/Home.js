@@ -1121,13 +1121,21 @@ const CarouselWrapper = styled.div`
 
   max-height: 800px;
   justify-content: center;
-  display: block;
+  display: unset;
+  place-items: center;
 
   /* Add styles for border and opacity */
   // border: ${(props) => (props.active ? "8px solid yellow" : "none")};
   opacity: ${(props) => (props.active ? 1 : 0.5)};
   border-radius: 85px;
   transition: border 0.3s ease, opacity 0.3s ease;
+
+  // display: flex;
+  // place-items: center;
+  // width: 100%;
+  // margin-top: 50px;
+  // margin: auto;
+  // padding: 0px;
 `;
 
 const CardColumn = styled.div`
@@ -1183,7 +1191,6 @@ const StyledProfileCard = styled(ProfileCard)`
   /* Add new styles for opacity and border */
   &.active-card {
     opacity: 1;
-    border: 5px solid yellow;
   }
 
   &.inactive-card {
