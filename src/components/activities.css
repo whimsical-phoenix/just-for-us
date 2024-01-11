@@ -9,12 +9,11 @@
 }
 
 #contacts {
-  width: 80%;
+  width: 100%;
   text-align: center;
   align-content: center;
   margin: auto;
   position: relative;
-  margin-left: 7rem;
 }
 
 .slider-call {
@@ -54,10 +53,10 @@
 
 /* change centering of carousel div in relation to whole page */
 .slider {
+  display: block;
   margin: auto;
-  width: 100%;
+  width: 80%;
   padding: 10px;
-  padding-left: 180px;
 }
 
 .slide {
@@ -92,7 +91,6 @@
 }
 
 .arrow {
-  color: #f8d408;
   position: absolute;
   cursor: pointer;
   z-index: 10;
@@ -142,8 +140,8 @@ svg.arrow-down {
   font-size: 50px;
   color: #2e3e5e;
   position: absolute;
-  left: 50%;
-  top: 90%;
+  left: 46%;
+  top: 92%;
 }
 
 /* contacts.css or your custom style sheet */
