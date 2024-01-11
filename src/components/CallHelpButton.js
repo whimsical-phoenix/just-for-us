@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Typography } from "@mui/material";
 import Modal from "react-modal";
-// import TelephoneIcon from "./icons/TelephoneIcon";
+import TelephoneIcon from "./icons/TelephoneIcon";
 import { AmbulanceIcon, AmbulanceSideIcon, NoAmbulanceIcon } from "./icons";
-import { FaPlus } from "react-icons/fa";
+// import { FaPlus } from "react-icons/fa";
 
 const StyledButtonAlignment = styled(Typography)`
   margin-top: 30px;
@@ -138,7 +138,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontSize={"48px"}
           fontWeight="700"
           style={{ display: "flex", alignItems: "center", padding: "0 20px" }}>
-          <FaPlus size={60} />
+          <TelephoneIcon size={60} />
           <div style={{ paddingLeft: "10px" }}>CALL SUSAN</div>
         </Typography>
       </CallHelpButton>
@@ -185,7 +185,7 @@ const CallHelpButtonComponent = ({ onClick }) => {
           fontSize={"48px"}
           fontWeight="500"
           color="#2D3E5F">
-          Call for medical emergency assistance
+          Call for assistance
         </Typography>
         <StyledButtonAlignment style={{ paddingLeft: "60px" }}>
           <ModalButton onClick={handleConfirm}>Yes, I need help</ModalButton>

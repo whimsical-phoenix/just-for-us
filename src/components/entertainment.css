@@ -9,12 +9,11 @@
 }
 
 #entertainment {
-  width: 80%;
+  width: 100%;
   text-align: center;
   align-content: center;
   margin: auto;
   position: relative;
-  margin-left: 6rem;
 }
 
 .slider-call {
@@ -49,9 +48,8 @@
 /* change centering of carousel div in relation to whole page */
 .slider {
   margin: auto;
-  width: 100%;
+  width: 80%;
   padding: 10px;
-  padding-left: 180px;
 }
 
 .slide {
@@ -96,7 +94,6 @@
   z-index: 10;
   right: 45%;
   top: -17%;
- 
 }
 .arrow-down {
   color: #f5d25e;
@@ -105,8 +102,8 @@
   top: -17%;
 }
 
-
-svg.arrow-up, svg.arrow-down {
+svg.arrow-up,
+svg.arrow-down {
   vertical-align: middle;
 }
 
@@ -129,7 +126,6 @@ svg.arrow-down {
   color: #68edff;
 }
 
-
 .next {
   right: -8%;
   top: 39%;
@@ -140,16 +136,14 @@ svg.arrow-down {
   top: 40%;
 }
 
-
-
 /* Moving the prompt on bottom of contact carousel */
-.prompt h1 {
+.promptEntertainment h1 {
   margin: 0;
   font-size: 50px;
   color: #2e3e5e;
   position: absolute;
-  left: 48%;
-  top: 97%;
+  left: 45%;
+  top: 88%;
 }
 
 /* contacts.css or your custom stylesheet */
