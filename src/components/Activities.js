@@ -326,17 +326,20 @@ const contactList = [
 const Activities = () => {
   const [cardIndex, setCardIndex] = useState(0);
 
+
   const CustomNextArrow = ({ onClick }) => (
     <CustomArrowButton
       onClick={() =>
         setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length)
       }
       style={{ right: -100 }}>
+
       <ChevronRightIcon />
     </CustomArrowButton>
   );
 
   const CustomPrevArrow = ({ onClick }) => (
+
     <CustomArrowButton
       onClick={() =>
         setCardIndex(
@@ -345,6 +348,7 @@ const Activities = () => {
         )
       }
       style={{ left: -100 }}>
+
       <ChevronLeftIcon />
     </CustomArrowButton>
   );
