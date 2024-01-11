@@ -1406,6 +1406,7 @@ const Home = () => {
             setActiveCarousel("componentData");
           }
           break;
+
         case "ArrowUp":
           // Handle up arrow key
           if (activeCarousel === "componentData") {
@@ -1413,6 +1414,7 @@ const Home = () => {
             setActiveCarousel("cardData");
           }
           break;
+
         case "Enter":
           // Handle Enter key
           if (activeCarousel === "cardData") {
@@ -1423,12 +1425,23 @@ const Home = () => {
               case 1:
                 activitiesRef.current.openModal();
                 break;
+              case 2:
+                if (entertainmentRef.current) {
+                  entertainmentRef.current.openModal();
+                }
+                break;
+              case 3:
+                if (lightsRef.current) {
+                  lightsRef.current.openModal();
+                }
+                break;
               // ... add more cases for other components if needed
               default:
                 break;
             }
           }
           break;
+
         default:
           break;
       }
@@ -1439,7 +1452,16 @@ const Home = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [centerCardIndex, activeCarousel, setDisableHover]);
+  }, [
+    centerCardIndex,
+    activeCarousel,
+    sliderRef,
+    tvRef,
+    activitiesRef,
+    entertainmentRef,
+    lightsRef,
+    setActiveCarousel,
+  ]);
 
   return (
     <>
