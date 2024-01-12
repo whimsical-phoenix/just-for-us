@@ -84,3 +84,92 @@ body {
     box-shadow: 0 0 0;
   }
 }
+
+@media all and (min-width: 600px) and (max-width: 1023px) {
+  .App {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+  }
+
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+
+  .App-header {
+    background-color: #FCF8E3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+    font-size: medium;
+  }
+
+  .slick-prev,
+  .slick-next {
+    display: block !important;
+    width: 80px; /* Adjust the width as needed */
+    height: 80px; /* Adjust the height as needed */
+    background-color: #e8e8e4;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  
+    &:active {
+      transform: translateY(-50%), scale(0.95);
+      box-shadow: 0 0 0;
+    }
+  }
+}
+
+/* Media query for mobile phones */
+/* @media only screen and (max-width: 599px) {
+  .App {
+    Adjust styles for mobile phones
+  }
+
+  .App-logo {
+    /* Adjust styles for mobile phones */
+  /* }
+
+  .App-header {
+    /* Adjust styles for mobile phones */
+  /* }
+
+  .card-container {
+    /* Adjust styles for mobile phones */
+  /*  }
+
+  .card {
+    /* Adjust styles for mobile phones */
+  /* }
+
+  .slick-prev,
+  .slick-next {
+    Adjust styles for mobile phones */
+  /*/
