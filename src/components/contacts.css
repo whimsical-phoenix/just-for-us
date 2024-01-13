@@ -202,3 +202,33 @@ svg.arrow-down {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Media query for tablets */
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .arrow-up,
+  .arrow-down {
+    width: 60px;
+    height: 60px;
+  }
+
+  .next,
+  .prev {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Media query for phones */
+@media only screen and (max-width: 599px) {
+  .arrow-up,
+  .arrow-down {
+    width: 40px;
+    height: 40px;
+  }
+
+  .next,
+  .prev {
+    width: 40px;
+    height: 40px;
+  }
+}
