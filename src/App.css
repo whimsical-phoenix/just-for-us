@@ -87,6 +87,7 @@ body {
 
 
 
+
 /* Common styles for tablets and phones */
 body {
   margin: 0;
@@ -141,3 +142,5 @@ body {
     height: 40px; /* Adjust navigation button size for phones */
   }
 }
+
+
