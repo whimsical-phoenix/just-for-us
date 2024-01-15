@@ -138,11 +138,15 @@ svg.arrow-down {
 
 /* Moving the prompt on bottom of contact carousel */
 .promptEntertainment h1 {
+  display: block;
+  align-items: center;
   margin: 0;
+  width: 100%;
+  text-align: center;
   font-size: 50px;
   color: #2e3e5e;
   position: absolute;
-  left: 45%;
+
   top: 88%;
 }
 
