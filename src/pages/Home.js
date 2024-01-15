@@ -1113,12 +1113,9 @@ const HomeContainer = styled.div`
   min-height: 50vh;
   text-align: center;
 `;
-
 const CarouselWrapper = styled.div`
   margin: 0 auto;
-
   max-width: 2500px;
-
   max-height: 800px;
   justify-content: center;
   display: unset;
@@ -1129,7 +1126,36 @@ const CarouselWrapper = styled.div`
   opacity: ${(props) => (props.active ? 1 : 0.5)};
   border-radius: 85px;
   transition: border 0.3s ease, opacity 0.3s ease;
+  
+  // Media Queries
+  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+   background-color: #eef596;
+   .styled.div{
+    transition: transform 0.9s easein, background 0.6s ease, color 0.6s ease;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 50px;
+    left: .5;
+    right: .5;
+    min-height: 20vh;
+   
+   }
+      
+   
 
+ 
+
+
+  
+   
+  }
+
+  @media only screen and (max-width: 578px) {
+    body {
+      background-color: #dde816;
+      }
+  }
   // display: flex;
   // place-items: center;
   // width: 100%;
@@ -1137,41 +1163,14 @@ const CarouselWrapper = styled.div`
   // margin: auto;
   // padding: 0px;
 `;
-
-
-// Media query for tablets (landscape and portrait)
-const tabletMediaQuery = `
-  @media only screen and (min-width: 600px) and (max-width: 1024px) {
-    font-size: 20px;
-  }
-`;
-
-// Media query for phones
-const phoneMediaQuery = `
-  @media only screen and (max-width: 599px) {
-     font-size: 16px;
-     display: grid;
-  }
-`;
-
 const CardColumn = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-  
-  ${tabletMediaQuery} {
-    /* Add additional styles for tablets */
-    // Example:
-    // font-size: 18px;
-  }
-  ${phoneMediaQuery} {
-    /* Add additional styles for phones */
-    // Example:
-    // font-size: 14px;
-  }
-`;
+  }   
+  `;
 
 const CustomArrowButton = styled.div`
   width: 80px;
