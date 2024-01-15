@@ -58,5 +58,13 @@ svg.arrow-down {
 
 #tv {
   padding-top: 2%;
-  padding-left: 35%;
+  padding-left: 37%;
+}
+
+.tvArrowUp {
+  margin-left: 15%;
+}
+
+.tvArrowDown {
+  margin-left: 9.3%;
 }
