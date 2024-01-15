@@ -116,14 +116,15 @@ svg.arrow-down {
 }
 
 /* Moving the prompt on bottom of contact carousel */
-.prompt h1 {
+.promptLights h1 {
+  display: block;
+  align-items: center;
   margin: 0;
+  width: 100%;
+  text-align: center;
   font-size: 50px;
   color: #2e3e5e;
   position: absolute;
 
-  left: 42%;
-
-  top: 82%;
-
+  top: 88%;
 }
