@@ -106,11 +106,11 @@ svg.arrow-down {
   vertical-align: middle;
 }
 svg.arrow-up {
-  margin-right: 45%;
+  margin-left: 45%;
 }
 
 svg.arrow-down {
-  margin-left: 52.5%;
+  margin-left: 48.5%;
   padding-top: -10%;
   padding: 1px;
   margin-top: -22px;
@@ -142,8 +142,7 @@ svg.arrow-down {
   position: absolute;
 
   left: 46%;
-  top: 92%;
-
+  top: 94%;
 }
 
 /* contacts.css or your custom style sheet */
@@ -188,4 +187,12 @@ svg.arrow-down {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.activitiesArrowUp {
+  margin-left: 7%;
+}
+
+.activitiesArrowDown {
+  margin-left: 0.8%;
 }
