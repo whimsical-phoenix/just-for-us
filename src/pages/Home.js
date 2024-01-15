@@ -1168,6 +1168,7 @@ const StyledProfileCard = styled(ProfileCard)`
   display: flex;
   color: black;
   font-size: 25px;
+  margin: 80px;
 
   &:hover {
     transform: scale(1.1);
@@ -1235,7 +1236,7 @@ const cardData = [
   {
     icon: <TvIcon />,
     title: "TV",
-    spaceBeforeBelowCard: ".. ....",
+    spaceBeforeBelowCard: "..... ....",
     textBelowCard: "Watch TV?",
     page: <Television />,
   },
@@ -1243,33 +1244,35 @@ const cardData = [
     icon: <GiWeightLiftingUp size={150} />,
 
     title: "ACTIVITIES",
-    spaceBeforeBelowCard: "..",
+    spaceBeforeBelowCard: "......",
     textBelowCard: "Join an Activity?",
     page: <Activities />,
   },
   {
     icon: <GiFilmSpool size={150} />,
     title: "ENTERTAINMENT",
+    spaceBeforeBelowCard: "..",
     textBelowCard: "Watch Entertainment?",
     page: <Entertainment />,
   },
   {
     icon: <IoMdPhotos size={150} />,
     title: "GALLERY",
-    spaceBeforeBelowCard: ".....",
+    spaceBeforeBelowCard: ".... ....",
 
     textBelowCard: "View Gallery?",
   },
   {
     icon: <FaPhoneAlt size={150} />,
     title: "VIDEO CALL",
+    spaceBeforeBelowCard: ".....",
     textBelowCard: "Make a Video Call?",
     page: <Contacts />,
   },
   {
     icon: <FaLightbulb size={150} />,
     title: "LIGHTS",
-    spaceBeforeBelowCard: "... ..",
+    spaceBeforeBelowCard: ".... ..",
     textBelowCard: "Change Lights?",
     page: <Lights />,
   },
