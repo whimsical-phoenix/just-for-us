@@ -215,7 +215,8 @@ const ProfileCardContainer = styled.div`
   border-radius: ${(props) =>
     props.active ? "30%" : props.borderRadius || "38px"};
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  margin: 50px;
+  margin: 50px 95px;
+
   padding: 20px;
 
   text-align: center;
