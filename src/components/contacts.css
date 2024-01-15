@@ -205,6 +205,7 @@ svg.arrow-down {
 
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
+<<<<<<< HEAD
   .linkStyle {
    
     font-size: 10px;
@@ -288,6 +289,18 @@ svg.arrow-down {
     font-size: 10px;
     left: 30%;
     top: 55%;
+=======
+  .arrow-up,
+  .arrow-down {
+    width: 60px;
+    height: 60px;
+  }
+
+  .next,
+  .prev {
+    width: 60px;
+    height: 60px;
+>>>>>>> 99ece0ee064e1ffdd6943e03340ae95859f6d92a
   }
 }
 

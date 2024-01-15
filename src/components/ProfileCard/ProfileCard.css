@@ -19,7 +19,7 @@
   background: gray;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 50px;
+  margin: 80px;
   padding: 20px;
   text-align: center;
   display: flex;
@@ -58,6 +58,7 @@
 }
 
 
+<<<<<<< HEAD
 /* Media query for tablets  */
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
   .profile-card-container {
@@ -113,3 +114,5 @@
     background-color: #dde816;
   }
 }
+=======
+>>>>>>> 99ece0ee064e1ffdd6943e03340ae95859f6d92a

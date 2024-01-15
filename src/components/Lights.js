@@ -325,7 +325,7 @@ const Lights = () => {
             ))}
           </Slider>
         </div>
-        <div className="prompt">
+        <div className="promptLights">
           <h1>{contactList[cardIndex].call}</h1>
         </div>
       </div>
