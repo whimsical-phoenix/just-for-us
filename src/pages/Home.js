@@ -1138,12 +1138,39 @@ const CarouselWrapper = styled.div`
   // padding: 0px;
 `;
 
+
+// Media query for tablets (landscape and portrait)
+const tabletMediaQuery = `
+  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+    font-size: 20px;
+  }
+`;
+
+// Media query for phones
+const phoneMediaQuery = `
+  @media only screen and (max-width: 599px) {
+     font-size: 16px;
+     display: grid;
+  }
+`;
+
 const CardColumn = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  
+  ${tabletMediaQuery} {
+    /* Add additional styles for tablets */
+    // Example:
+    // font-size: 18px;
+  }
+  ${phoneMediaQuery} {
+    /* Add additional styles for phones */
+    // Example:
+    // font-size: 14px;
+  }
 `;
 
 const CustomArrowButton = styled.div`
@@ -1449,6 +1476,7 @@ const Home = () => {
           break;
       }
     };
+
 
     window.addEventListener("keydown", handleKeyDown);
 

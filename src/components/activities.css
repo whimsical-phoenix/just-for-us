@@ -41,6 +41,25 @@
   position: fixed;
 }
 
+@media screen and (min-width: 768px) {
+  #contacts {
+    padding: 20px;
+  }
+
+  .slider {
+    width: 80%;
+  }
+
+  .slide {
+    height: 27rem;
+    padding: 4rem 3rem;
+  }
+
+  .slide h1 {
+    font-size: 60px;
+  }
+
+}
 /* change centering between carousel slides */
 .slick-slide > div {
   display: flex;
