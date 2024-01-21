@@ -221,9 +221,10 @@ const contactList = [
 ];
 
 const Lights = () => {
-  const [cardIndex, setCardIndex] = useState(0);
+  const [cardIndex, setCardIndex] = useState(1);
   const [isYellow, setIsYellow] = useState(false);
   const sliderRef = useRef(null);
+  const lightsRef = useRef(null);
 
   const toggleColor = () => {
     setIsYellow((prevIsYellow) => !prevIsYellow);
@@ -232,7 +233,6 @@ const Lights = () => {
   const CustomNextArrow = () => (
     <CustomArrowButton
       onClick={() => {
-        setCardIndex((prevIndex) => (prevIndex + 1) % contactList.length);
         sliderRef.current.slickNext();
       }}
       style={{ right: -100 }}>
@@ -243,10 +243,6 @@ const Lights = () => {
   const CustomPrevArrow = () => (
     <CustomArrowButton
       onClick={() => {
-        setCardIndex(
-          (prevIndex) =>
-            (prevIndex - 1 + contactList.length) % contactList.length
-        );
         sliderRef.current.slickPrev();
       }}
       style={{ left: -100 }}>
@@ -264,9 +260,11 @@ const Lights = () => {
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
     beforeChange: (current, next) => setCardIndex(next),
+    initialSlide: 1, // Set the initial slide to the middle card
+    afterChange: (current) => setCardIndex(current),
+    arrows: true, // Enable arrows for mouse navigation
+    dots: false, // Disable dots for mouse navigation
   };
-
-  const lightsRef = useRef(null);
 
   useEffect(() => {
     // Ensure focus on the Lights component for keyboard navigation

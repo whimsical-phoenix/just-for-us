@@ -356,8 +356,8 @@ const Activities = () => {
     slidesToShow: 3,
     centerMode: true,
     centerPadding: 0,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow data-clickable="true" />,
+    prevArrow: <CustomPrevArrow data-clickable="true" />,
     beforeChange: (current, next) => setCardIndex(next),
   };
 

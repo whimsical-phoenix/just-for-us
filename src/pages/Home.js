@@ -1116,28 +1116,22 @@ const HomeContainer = styled.div`
 
 const CarouselWrapper = styled.div`
   margin: 0 auto;
-
   max-width: 2500px;
-
   max-height: 800px;
   justify-content: center;
   display: unset;
   place-items: center;
-
-  /* Add styles for border and opacity */
-  // border: ${(props) => (props.active ? "8px solid yellow" : "none")};
   opacity: ${(props) => (props.active ? 1 : 0.5)};
   border-radius: 85px;
   transition: border 0.3s ease, opacity 0.3s ease;
 
-  // display: flex;
-  // place-items: center;
-  // width: 100%;
-  // margin-top: 50px;
-  // margin: auto;
-  // padding: 0px;
+  &:hover,
+  &:active,
+  &:focus,
+  &:touch {
+    cursor: pointer;
+  }
 `;
-
 
 // Media query for tablets (landscape and portrait)
 const tabletMediaQuery = `
@@ -1160,7 +1154,14 @@ const CardColumn = styled.div`
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-  
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:touch {
+    cursor: pointer;
+  }
+
   ${tabletMediaQuery} {
     /* Add additional styles for tablets */
     // Example:
@@ -1197,6 +1198,12 @@ const StyledProfileCard = styled(ProfileCard)`
   font-size: 25px;
   margin: 80px;
 
+  &:hover,
+  &:active,
+  &:focus,
+  &:touch {
+    cursor: pointer;
+  }
   &:hover {
     transform: scale(1.1);
     .icon-container {
@@ -1208,6 +1215,7 @@ const StyledProfileCard = styled(ProfileCard)`
 
   &.slick-center {
     transform: scale(1.5);
+    cursor: pointer;
     background: yellow;
     .icon-container {
       svg {
@@ -1219,10 +1227,12 @@ const StyledProfileCard = styled(ProfileCard)`
   /* Add new styles for opacity and border */
   &.active-card {
     opacity: 1;
+    cursor: pointer;
   }
 
   &.inactive-card {
     opacity: 0.5;
+    cursor: pointer;
   }
 `;
 
@@ -1308,12 +1318,9 @@ const cardData = [
 const CarouselDivBox = styled.div`
   display: block;
   justify-content: center;
-
-  // border: ${(props) => (props.active ? "5px solid yellow" : "none")};
-  // opacity: ${(props) => (props.active ? 1 : 0.5)};
-  // border-radius: 10px;
-  // transition: border 0.3s ease, opacity 0.3s ease;
 `;
+
+// ... (imports and styled components remain unchanged)
 
 const Home = () => {
   const sliderRef = useRef(null);
@@ -1327,7 +1334,7 @@ const Home = () => {
     centerMode: true,
     centerPadding: "0",
     infinite: true,
-    speed: 500,
+    speed: 150,
     slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <CustomNextArrow data-clickable="true" />,
@@ -1477,7 +1484,6 @@ const Home = () => {
       }
     };
 
-
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
@@ -1498,7 +1504,10 @@ const Home = () => {
     <>
       <HomeContainer disableHover={disableHover}>
         {/* Card Carousel */}
-        <CarouselWrapper active={activeCarousel === "cardData"}>
+        <CarouselWrapper
+          active={activeCarousel === "cardData"}
+          onClick={() => handleCarouselChange("cardData")}
+          onTouchStart={() => handleCarouselChange("cardData")}>
           <CarouselDivBox active={activeCarousel === "cardData"}>
             <Slider
               {...settings}
@@ -1534,12 +1543,13 @@ const Home = () => {
         </CarouselWrapper>
       </HomeContainer>
       {/* Component Carousel */}
-      <CarouselWrapper active={activeCarousel === "componentData"}>
+      <CarouselWrapper
+        active={activeCarousel === "componentData"}
+        onClick={() => handleCarouselChange("componentData")}
+        onTouchStart={() => handleCarouselChange("componentData")}>
         {centerCardIndex === 0 && <Television ref={tvRef} />}
         {centerCardIndex === 1 && <Activities ref={activitiesRef} />}
-        {centerCardIndex === 2 && (
-          <Entertainment ref={(ref) => (entertainmentRef.current = ref)} />
-        )}
+        {centerCardIndex === 2 && <Entertainment ref={entertainmentRef} />}
         {centerCardIndex === 4 && <Contacts ref={contactsRef} />}
         {centerCardIndex === 5 && <Lights ref={lightsRef} />}
         {/* ... add more components if needed */}
