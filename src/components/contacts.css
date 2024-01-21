@@ -205,7 +205,7 @@ svg.arrow-down {
 
 /* Media query for tablets */
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
-  .linkStyle {
+  <<<<<<< HEAD .linkStyle {
     font-size: 10px;
     top: -40px;
   }
@@ -214,44 +214,22 @@ svg.arrow-down {
     width: 50%;
   }
 
-  .slider-call {
-    padding-top: 3rem;
-  }
-
-  .call-help h1 {
-    margin: 0.4rem;
-  }
-
-  .arrow-down {
-    margin-left: 27%;
-  }
-
-  .home-logo {
-    margin-bottom: 0;
-    margin-top: 17px;
-  }
-
   /* change centering between carousel slides */
-  .slick-slide > div {
+  /* .slick-slide > div {
+  
     width: 50%;
     margin-top: 20px;
   }
-
+   */
   /* change centering of carousel div in relation to whole page */
   .slider {
-    margin: auto;
-    width: 30%;
-    padding: 5px;
+    width: 70%;
   }
 
   .slide {
     transform: scale(0.5);
-    opacity: 1;
-    gap: 0.2rem;
-    height: 9rem;
-    padding: 2rem 1rem;
-    background-color: #7f8181;
-    border-radius: 0.5rem;
+    height: 20rem;
+    margin-top: 10rem;
   }
 
   .slide h1 {
@@ -259,8 +237,12 @@ svg.arrow-down {
     font-size: 30px;
   }
 
-  .slide .nav-icon {
+  /* .slide .nav-icon {
     margin-top: 10px;
+  } */
+
+  .activeSlide {
+    transform: scale(0.4);
   }
   .arrow {
     z-index: 5;
@@ -300,8 +282,6 @@ svg.arrow-down {
   /* Moving the prompt on bottom of contact carousel */
   .prompt h1 {
     font-size: 10px;
-    color: #2e3e5e;
-    position: absolute;
     left: 30%;
     top: 55%;
   }

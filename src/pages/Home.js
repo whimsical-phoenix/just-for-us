@@ -1113,7 +1113,6 @@ const HomeContainer = styled.div`
   min-height: 50vh;
   text-align: center;
 `;
-
 const CarouselWrapper = styled.div`
   margin: 0 auto;
   max-width: 2500px;
